@@ -10,7 +10,7 @@ export default Ember.Service.extend({
   }),
 
   config: Ember.computed(function() {
-    let config = Ember.getOwner(this).resolveRegistration('config:environment').emberRollbar || {};
+    let config = this._config().emberRollbarClient || {};
     return Ember.assign(this._defaultConfig(), config);
   }),
 
@@ -20,7 +20,7 @@ export default Ember.Service.extend({
     return this.get('notifier').configure({payload: { person: this.get('currentUser') }});
   }),
 
-  enabledUserChanged: Ember.observer('enabled', function() {
+  enabledChanged: Ember.observer('enabled', function() {
     return this.get('notifier').configure({enabled: this.get('enabled')});
   }),
 
@@ -70,6 +70,10 @@ export default Ember.Service.extend({
   },
 
   _environment() {
-    return Ember.getOwner(this).resolveRegistration('config:environment').environment
+    return this._config().environment
+  },
+
+  _config() {
+    return Ember.getOwner(this).resolveRegistration('config:environment');
   }
 });
