@@ -5,9 +5,7 @@
   <a href='https://gitter.im/Exelord/ember-rollbar-client?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge'><img src="https://badges.gitter.im/Exelord/ember-rollbar-client.svg" alt="Gitter" /></a>
 </p>
 
-
-# ember-rollbar-client
-
+___
 The Rollbar client for EmberJS applications.
 > This one just works!
 
