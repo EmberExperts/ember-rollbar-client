@@ -6,11 +6,11 @@ const Funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
 
 module.exports = {
-  name: 'ember-rollbar',
+  name: 'ember-rollbar-client',
 
   included: function(app) {
     this._super.included(app);
-    app.import('vendor/ember-rollbar/rollbar/rollbar.named-amd.js');
+    app.import('vendor/ember-rollbar-client/rollbar/rollbar.named-amd.js');
   },
 
   rollbarPath: function() {
@@ -21,7 +21,7 @@ module.exports = {
     let trees = [tree];
 
     trees.push(new Funnel(this.rollbarPath(), {
-      destDir: 'ember-rollbar/rollbar',
+      destDir: 'ember-rollbar-client/rollbar',
       files: ['rollbar.named-amd.js']
     }));
 

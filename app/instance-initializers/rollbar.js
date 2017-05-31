@@ -1,1 +1,1 @@
-export { default, initialize } from 'ember-rollbar/instance-initializers/rollbar';
+export { default, initialize } from 'ember-rollbar-client/instance-initializers/rollbar';
