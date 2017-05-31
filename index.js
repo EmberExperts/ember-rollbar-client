@@ -14,7 +14,7 @@ module.exports = {
   },
 
   rollbarPath: function() {
-    return path.join(this.app.project.nodeModulesPath, 'rollbar-browser', 'dist');
+    return path.join(this.app.project.nodeModulesPath, 'rollbar', 'dist');
   },
 
   treeForVendor: function(tree) {
@@ -26,11 +26,5 @@ module.exports = {
     }));
 
     return mergeTrees(trees);
-  },
-
-  includedCommands: function() {
-    return {
-      'upload-sourcemaps': require('./lib/commands/upload-sourcemaps')
-    };
   }
 };

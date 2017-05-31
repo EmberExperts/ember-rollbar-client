@@ -24,7 +24,7 @@
     "broccoli-funnel": "1.2.0",
     "broccoli-merge-trees": "2.0.0",
     "ember-cli-babel": "^6.1.0",
-    "rollbar-browser": "^1.9.4"
+    "rollbar": "^2.0.2"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.5.0",
