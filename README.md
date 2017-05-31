@@ -9,6 +9,16 @@ ___
 The Rollbar client for EmberJS applications.
 > This one just works!
 
+- Automatic logger for:
+  - `js window` errors
+  - `ember` errors
+  - `rsvp` errors
+  - `ajax` errros
+- No `Bower` dependency
+- Fastboot compatible
+- Practical wrapper with access to pure `Rollbar`
+- Compatible with Ember 2.8 and up
+
 # Getting started
 
 ## Instalation
