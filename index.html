@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ember Rollbar Client</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <meta name="name" content="Ember Rollbar Client - The Rollbar client for Ember applications">
+    <meta name="author" content="Exelord (Maciej Kwaśniak)">
+    <meta name="keywords" content="ember, rollbar, wrapper, client, addon">
+    <meta name="description" content="Ember Rollbar Client is a wrapper of automatic Rollbar logger for EmberJS applications.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="https://exelord.github.io/ember-initials">
+    <meta name="twitter:creator" content="@TheMacsour">
+    <meta name="twitter:title" content="Ember Rollbar Client - The Rollbar client for Ember applications">
+    <meta name="twitter:description" content="Ember Rollbar Client is a wrapper of automatic Rollbar logger for EmberJS applications.">
+    <meta name="twitter:image" content="https://exelord.github.io/ember-initials/images/og-image-662c992280587dab66deb50c687e89c4.jpg">
+
+    <meta property="og:title" content="Ember Rollbar Client - The Rollbar client for Ember applications">
+    <meta property="og:url" content="https://exelord.github.io/ember-initials">
+    <meta property="og:image" content="https://exelord.github.io/ember-initials/images/og-image-662c992280587dab66deb50c687e89c4.jpg">
+    <meta property="og:description" content="Ember Rollbar Client is a wrapper of automatic Rollbar logger for EmberJS applications.">
+
+    <script>
+      ((window.gitter = {}).chat = {}).options = {
+        room: 'exelord/ember-rollbar-client'
+      };
+    </script>
+
+    <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-92352716-4', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    
+<meta name="dummy/config/environment" content="%7B%22modulePrefix%22%3A%22dummy%22%2C%22environment%22%3A%22production%22%2C%22rootURL%22%3A%22/ember-rollbar-client/%22%2C%22locationType%22%3A%22hash%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7B%22Date%22%3Afalse%7D%7D%2C%22APP%22%3A%7B%7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+
+    <link rel="stylesheet" href="/ember-rollbar-client/assets/vendor-2cc3ab6c0c8b8b7103a3a8673ec9eb56.css">
+    <link rel="stylesheet" href="/ember-rollbar-client/assets/dummy-847e3e0fbd55f9e9bbc0d0c5394b50af.css">
+
+    
+  <link rel="manifest" href="/ember-rollbar-client/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ffffff">
+<meta name="application-name" content="Ember Rollbar Client">
+<link rel="apple-touch-icon" sizes="57x57" href="/ember-rollbar-client/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/ember-rollbar-client/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/ember-rollbar-client/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/ember-rollbar-client/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/ember-rollbar-client/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/ember-rollbar-client/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/ember-rollbar-client/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/ember-rollbar-client/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/ember-rollbar-client/apple-touch-icon-180x180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ember Rollbar Client">
+<link rel="icon" type="image/png" sizes="228x228" href="/ember-rollbar-client/coast-228x228-fedc386d81d838427d94e266edaf8728.png">
+<link rel="yandex-tableau-widget" href="/ember-rollbar-client/yandex-browser-manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ember-rollbar-client/mstile-144x144.png">
+<meta name="msapplication-config" content="/ember-rollbar-client/browserconfig.xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/ember-rollbar-client/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/ember-rollbar-client/favicon-16x16.png">
+<link rel="shortcut icon" href="/ember-rollbar-client/favicon.ico">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)" href="/ember-rollbar-client/apple-touch-startup-image-320x460-802c9b774261c7e8984d2d03509c2815.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" href="/ember-rollbar-client/apple-touch-startup-image-640x920-fe1ae7660f77cd8a66075b36a4093792.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="/ember-rollbar-client/apple-touch-startup-image-640x1096-41debe37f43e7107152c418a0c124a78.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="/ember-rollbar-client/apple-touch-startup-image-750x1294-949108d44ca79ebd937ad97a36e44c07.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)" href="/ember-rollbar-client/apple-touch-startup-image-1182x2208-166faf2b9be1b7d65120f5c38cf97994.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="/ember-rollbar-client/apple-touch-startup-image-1242x2148-53243eed07ff7a0a147ddf6d2badc06c.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" href="/ember-rollbar-client/apple-touch-startup-image-748x1024-35ce2f0f159e8c6519310584fa9045ef.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" href="/ember-rollbar-client/apple-touch-startup-image-768x1004-006869880fed4ca3eb85a1d1ddd7bffe.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" href="/ember-rollbar-client/apple-touch-startup-image-1496x2048-c3c77323681ab137b1d7f96f6b84eddf.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="/ember-rollbar-client/apple-touch-startup-image-1536x2008-e95f03fcb4854703959dc5fd63194c80.png">
+</head>
+  <body>
+    
+
+    <script src="/ember-rollbar-client/assets/vendor-57827d1046ebd1c0a02c460372df175c.js"></script>
+    <script src="/ember-rollbar-client/assets/dummy-c9f8aadda2c0a687ebc76c5842a989be.js"></script>
+
+    <div id="ember-bootstrap-wormhole"></div>
+  </body>
+</html>
