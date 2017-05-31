@@ -5,14 +5,16 @@ export default Ember.Service.extend({
   enabled: true,
   currentUser: null,
 
-  notifier: Ember.computed('config', function() {
-    return Rollbar.init(this.get('config'));
+  notifier: Ember.computed(function() {
+    return this.rollbarClient();
   }),
 
-  config: Ember.computed(function() {
-    let config = this._config().emberRollbarClient || {};
-    return Ember.assign(this._defaultConfig(), config);
-  }),
+  rollbarClient(customConfig = {}) {
+    let appConfig = this._appConfig().emberRollbarClient || {};
+    let config = Ember.assign(this._defaultConfig(), appConfig, customConfig);
+
+    return new Rollbar(config);
+  },
 
   // Observers
 
@@ -70,10 +72,10 @@ export default Ember.Service.extend({
   },
 
   _environment() {
-    return this._config().environment
+    return this._appConfig().environment
   },
 
-  _config() {
+  _appConfig() {
     return Ember.getOwner(this).resolveRegistration('config:environment');
   }
 });
