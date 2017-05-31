@@ -1,5 +1,7 @@
 # ember-rollbar-client
 
+[![Join the chat at https://gitter.im/ember-rollbar-client/Lobby](https://badges.gitter.im/ember-rollbar-client/Lobby.svg)](https://gitter.im/ember-rollbar-client/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
