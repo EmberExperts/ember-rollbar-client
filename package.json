@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "The Rollbar client for Ember applications.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
     "rollbar",
     "client",
     "logger",
