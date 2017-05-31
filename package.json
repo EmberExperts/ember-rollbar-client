@@ -1,24 +1,30 @@
 {
-  "name": "ember-rollbar",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "name": "ember-rollbar-client",
+  "version": "0.1.0",
+  "description": "The Rollbar client for Ember applications.",
   "keywords": [
     "ember-addon"
+    "rollbar",
+    "client",
+    "logger",
+    "ember"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Exelord (Maciej Kwaśniak)",
   "directories": {
-    "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/Exelord/ember-rollbar-client",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
     "test": "ember try:each"
   },
   "dependencies": {
-    "ember-cli-babel": "^5.1.7"
+    "broccoli-funnel": "1.1.0",
+    "broccoli-merge-trees": "2.0.0",
+    "ember-cli-babel": "^5.1.7",
+    "rollbar-browser": "^1.9.4"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
@@ -38,7 +44,6 @@
     "ember-load-initializers": "^0.6.0",
     "ember-resolver": "^2.0.3",
     "ember-source": "~2.12.0",
-    "ember-welcome-page": "^2.0.2",
     "loader.js": "^4.2.3"
   },
   "engines": {
