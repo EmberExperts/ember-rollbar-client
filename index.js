@@ -10,7 +10,7 @@ module.exports = {
 
   included: function(app) {
     this._super.included(app);
-    app.import('vendor/ember-rollbar-client/rollbar/rollbar.named-amd.js');
+    app.import('vendor/ember-rollbar-client/rollbar.named-amd.js');
   },
 
   rollbarPath: function() {
@@ -21,7 +21,7 @@ module.exports = {
     let trees = [tree];
 
     trees.push(new Funnel(this.rollbarPath(), {
-      destDir: 'ember-rollbar-client/rollbar',
+      destDir: 'ember-rollbar-client',
       files: ['rollbar.named-amd.js']
     }));
 
