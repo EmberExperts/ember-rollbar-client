@@ -3,7 +3,6 @@
 
 const path = require('path');
 const Funnel = require('broccoli-funnel');
-const mergeTrees = require('broccoli-merge-trees');
 
 module.exports = {
   name: 'ember-rollbar-client',
@@ -17,14 +16,10 @@ module.exports = {
     return path.join(this.app.project.nodeModulesPath, 'rollbar', 'dist');
   },
 
-  treeForVendor: function(tree) {
-    let trees = [tree];
-
-    trees.push(new Funnel(this.rollbarPath(), {
+  treeForVendor: function() {
+    return new Funnel(this.rollbarPath(), {
       destDir: 'ember-rollbar-client',
       files: ['rollbar.named-amd.js']
-    }));
-
-    return mergeTrees(trees);
+    });
   }
 };
