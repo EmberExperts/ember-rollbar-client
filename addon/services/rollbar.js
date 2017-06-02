@@ -19,11 +19,11 @@ export default Ember.Service.extend({
   // Observers
 
   currentUserChanged: Ember.observer('currentUser', function() {
-    return this.get('notifier').configure({payload: { person: this.get('currentUser') }});
+    return this.get('notifier').configure({ payload: { person: this.get('currentUser') } });
   }),
 
   enabledChanged: Ember.observer('enabled', function() {
-    return this.get('notifier').configure({enabled: this.get('enabled')});
+    return this.get('notifier').configure({ enabled: this.get('enabled') });
   }),
 
   // Notifications
@@ -54,8 +54,8 @@ export default Ember.Service.extend({
     return {
       enabled: this.get('enabled'),
       accessToken: '',
-      captureUncaught: true,
-      captureUnhandledRejections: true,
+      captureUncaught: this._environment() !== 'test',
+      captureUnhandledRejections: this._environment() !== 'test',
       payload: {
         environment: this._environment(),
         client: {
@@ -72,7 +72,7 @@ export default Ember.Service.extend({
   },
 
   _environment() {
-    return this._appConfig().environment
+    return this._appConfig().environment;
   },
 
   _appConfig() {
