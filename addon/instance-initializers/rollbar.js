@@ -2,16 +2,12 @@ import Ember from 'ember';
 
 export function initialize(appInstance) {
   let rollbarService = appInstance.lookup('service:rollbar');
+  let oldOnError = Ember.onerror || function() {};
 
-  Ember.onerror = (error) => rollbarService.error(error);
-
-  Ember.RSVP.on('error', (error) => {
-    if (error && error.message === 'TransitionAborted') {
-      return;
-    }
-
-    rollbarService.error(error)
-  });
+  Ember.onerror = () => {
+    oldOnError(...arguments);
+    rollbarService.error(...arguments);
+  };
 }
 
 export default {

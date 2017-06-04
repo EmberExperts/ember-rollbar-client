@@ -31,11 +31,14 @@ test('register error handler for Ember errors', function(assert) {
   Ember.onerror();
 });
 
-// TODO: Randomly passing... Can't figure out how to wait till RSVP.on('error')
-// _________________________________________________________________
-// test('register error handler for RSVP errors', function(assert) {
-//   assert.expect(1);
-//   this.appInstance.register('service:rollbar', createRollbarMock(assert))
-//   initialize(this.appInstance);
-//   Ember.RSVP.reject();
-// });
+test('error handler does not override previous hook', function(assert) {
+  assert.expect(2);
+  this.appInstance.register('service:rollbar', createRollbarMock(assert))
+
+  Ember.onerror = function() {
+    assert.ok(true);
+  }
+
+  initialize(this.appInstance);
+  Ember.onerror();
+});
