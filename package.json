@@ -22,8 +22,8 @@
   },
   "dependencies": {
     "broccoli-funnel": "1.2.0",
-    "ember-cli-babel": "^6.1.0",
-    "rollbar": "^2.0.2"
+    "ember-cli-babel": "^6.4.1",
+    "rollbar": "^2.0.4"
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
@@ -44,13 +44,13 @@
     "ember-cli-shims": "^1.1.0",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-uglify": "^1.2.0",
-    "ember-disable-prototype-extensions": "^1.1.0",
+    "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.0",
     "ember-font-awesome": "^3.0.5",
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.1.0",
     "ember-scroll-to": "^0.6.4",
-    "ember-source": "~2.13.2",
+    "ember-source": "~2.13.3",
     "loader.js": "^4.4.0"
   },
   "engines": {
