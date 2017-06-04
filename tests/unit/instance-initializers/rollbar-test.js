@@ -13,13 +13,29 @@ module('Unit | Instance Initializer | rollbar', {
   afterEach() {
     Ember.run(this.appInstance, 'destroy');
     destroyApp(this.application);
-  }
+  },
 });
 
-// Replace this with your real tests.
-test('it works', function(assert) {
+function createRollbarMock(assert) {
+  return Ember.Object.extend({
+    error() {
+      assert.ok(true);
+    }
+  });
+}
+
+test('register error handler for Ember errors', function(assert) {
+  assert.expect(1);
+  this.appInstance.register('service:rollbar', createRollbarMock(assert))
   initialize(this.appInstance);
-
-  // you would normally confirm the results of the initializer here
-  assert.ok(true);
+  Ember.onerror();
 });
+
+// TODO: Randomly passing... Can't figure out how to wait till RSVP.on('error')
+// _________________________________________________________________
+// test('register error handler for RSVP errors', function(assert) {
+//   assert.expect(1);
+//   this.appInstance.register('service:rollbar', createRollbarMock(assert))
+//   initialize(this.appInstance);
+//   Ember.RSVP.reject();
+// });

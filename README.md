@@ -13,7 +13,6 @@ The Rollbar client for EmberJS applications.
   - `js window` errors
   - `ember` errors
   - `rsvp` errors
-  - `ajax` errros
 - No `Bower` dependency
 - Fastboot compatible
 - Practical wrapper with access to pure `Rollbar`
@@ -29,7 +28,7 @@ The Rollbar client for EmberJS applications.
     var ENV = {
       'emberRollbarClient': {
         accessToken: 'rollbar-write-client-token',
-        // By default Rollbar logging is enabled in every environment.
+        // By default Rollbar logging is enabled in every environment except test and development.
         // Here is an example if you want to use it only in production
         enabled: environment === 'production'
       };
@@ -87,17 +86,18 @@ You can overwrite Rollbar configuration in environment's config. Here is the def
 
 ``` js
 'emberRollbarClient': {
-  enabled: true,
+  enabled: environment !== 'test' && environment !== 'development',
   accessToken: '',
-  captureUncaught: true,
-  captureUnhandledRejections: true,
+  verbose: true,
+  captureUncaught: environment !== 'test',
+  captureUnhandledRejections: environment !== 'test',
   payload: {
     environment: environment,
     client: {
       javascript: {
         source_map_enabled: true,
         guess_uncaught_frames: true
-        // code_version: "some version string"
+        // code_version: "some version string, such as a version number or git sha",
       }
     }
   }
