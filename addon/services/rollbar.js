@@ -49,4 +49,15 @@ export default Ember.Service.extend({
   debug(message, data = {}) {
     return this.get('notifier').debug(message, data);
   },
+
+  registerLogger() {
+    if (this.get('enabled')) {
+      let oldOnError = Ember.onerror || function() {};
+
+      Ember.onerror = () => {
+        oldOnError(...arguments);
+        this.error(...arguments);
+      };
+    }
+  }
 });
