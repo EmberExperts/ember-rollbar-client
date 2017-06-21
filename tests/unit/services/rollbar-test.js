@@ -47,37 +47,41 @@ test('debug', function(assert) {
 });
 
 test('registerLogger: register error handler for Ember errors if enabled', function(assert) {
-  assert.expect(2);
+  assert.expect(3);
+  let error = new Error('foo');
   let service = this.subject({
     config: {
       enabled: true
     },
-    error(message) {
+    error(message, error) {
       assert.ok(true, 'error handler is called');
-      assert.equal(message, 'foo', 'error is passed to error handler as argument');
+      assert.equal(message, 'foo', 'error messages is passed to error handler as first argument');
+      assert.equal(error, error, 'error object is passed to error handler as second argument');
     }
   });
   service.registerLogger();
-  Ember.onerror('foo');
+  Ember.onerror(error);
 });
 
 test('registerLogger: does not override previous hook', function(assert) {
-  assert.expect(4);
+  assert.expect(5);
+  let error = new Error('foo');
   let service = this.subject({
     config: {
       enabled: true
     },
-    error(message) {
+    error(message, error) {
       assert.ok(true, 'rollbar error handler is called');
-      assert.equal(message, 'foo', 'error is passed to rollbar error handler as argument');
+      assert.equal(message, 'foo', 'error message is passed to rollbar error handler as first argument');
+      assert.equal(error, error, 'error object is passed to rollbar error handler as second argument');
     }
   });
-  Ember.onerror = function(message) {
+  Ember.onerror = function(error) {
     assert.ok(true, 'previous hook is called');
-    assert.equal(message, 'foo', 'error is passed to previous hook as argument');
+    assert.equal(error, error, 'error object is passed to previous hook as first argument');
   };
   service.registerLogger();
-  Ember.onerror('foo');
+  Ember.onerror(error);
 });
 
 test('registerLogger: does not register logger if disabled', function(assert) {
