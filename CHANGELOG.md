@@ -1,5 +1,21 @@
 # Change Log
 
+## [v0.3.4](https://github.com/Exelord/ember-rollbar-client/tree/v0.3.4) (2017-06-22)
+[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.3.3...v0.3.4)
+
+**Merged pull requests:**
+
+- Fix: errors logged via Ember.onerror have empty message [\#2](https://github.com/Exelord/ember-rollbar-client/pull/2) ([jelhan](https://github.com/jelhan))
+
+## [v0.3.3](https://github.com/Exelord/ember-rollbar-client/tree/v0.3.3) (2017-06-09)
+[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.3.2...v0.3.3)
+
+## [v0.3.2](https://github.com/Exelord/ember-rollbar-client/tree/v0.3.2) (2017-06-04)
+[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.3.1...v0.3.2)
+
+## [v0.3.1](https://github.com/Exelord/ember-rollbar-client/tree/v0.3.1) (2017-06-02)
+[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.3.0...v0.3.1)
+
 ## [v0.3.0](https://github.com/Exelord/ember-rollbar-client/tree/v0.3.0) (2017-05-31)
 [Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.2.2...v0.3.0)
 
