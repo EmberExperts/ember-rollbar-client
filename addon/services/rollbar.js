@@ -54,9 +54,9 @@ export default Ember.Service.extend({
     if (this.get('enabled')) {
       let oldOnError = Ember.onerror || function() {};
 
-      Ember.onerror = () => {
-        oldOnError(...arguments);
-        this.error(...arguments);
+      Ember.onerror = (...args) => {
+        oldOnError(...args);
+        this.error(...args);
       };
     }
   }

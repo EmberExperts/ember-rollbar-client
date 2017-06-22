@@ -18,27 +18,14 @@ module('Unit | Instance Initializer | rollbar', {
 
 function createRollbarMock(assert) {
   return Ember.Object.extend({
-    error() {
+    registerLogger() {
       assert.ok(true);
     }
   });
 }
 
-test('register error handler for Ember errors', function(assert) {
+test('invokes registerLogger', function(assert) {
   assert.expect(1);
   this.appInstance.register('service:rollbar', createRollbarMock(assert))
   initialize(this.appInstance);
-  Ember.onerror();
-});
-
-test('error handler does not override previous hook', function(assert) {
-  assert.expect(2);
-  this.appInstance.register('service:rollbar', createRollbarMock(assert))
-
-  Ember.onerror = function() {
-    assert.ok(true);
-  }
-
-  initialize(this.appInstance);
-  Ember.onerror();
 });
