@@ -1,6 +1,8 @@
 /* eslint-env node */
 'use strict';
 
+const git = require('git-rev-sync')
+
 module.exports = function(environment, appConfig) {
   appConfig.emberRollbarClient = {
     enabled: environment !== 'test' && environment !== 'development',
@@ -9,16 +11,14 @@ module.exports = function(environment, appConfig) {
     captureUncaught: environment !== 'test',
     captureUnhandledRejections: environment !== 'test',
     payload: {
-      environment: environment,
+      environment: 'okoko',
       client: {
         javascript: {
           source_map_enabled: true,
-          // code_version: "some version string, such as a version number or git sha",
-          // Optionally have Rollbar guess which frames the error was thrown from
-          // when the browser does not provide line and column numbers.
+          code_version: git.long(),
           guess_uncaught_frames: true
         }
       }
     }
-  }
+  };
 };
