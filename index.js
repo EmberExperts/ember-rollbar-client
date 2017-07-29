@@ -25,7 +25,7 @@ module.exports = {
 
   includedCommands: function() {
     return {
-      'automatic-source-maps': require('./lib/commands/automatic-source-maps')
+      'notify-rollbar-sourcemaps': require('./lib/commands/notify-rollbar-sourcemaps')
     };
   }
 };
