@@ -11,7 +11,7 @@ module.exports = function(environment, appConfig) {
     captureUncaught: environment !== 'test',
     captureUnhandledRejections: environment !== 'test',
     payload: {
-      environment: 'okoko',
+      environment: environment,
       client: {
         javascript: {
           source_map_enabled: true,
