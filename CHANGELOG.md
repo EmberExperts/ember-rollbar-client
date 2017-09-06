@@ -1,5 +1,22 @@
 # Change Log
 
+## [Unreleased](https://github.com/Exelord/ember-rollbar-client/tree/HEAD)
+
+[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.4.0...HEAD)
+
+**Closed issues:**
+
+- There's no automatic logger for RSVP errors. [\#6](https://github.com/Exelord/ember-rollbar-client/issues/6)
+- update rollbar [\#5](https://github.com/Exelord/ember-rollbar-client/issues/5)
+
+## [v0.4.0](https://github.com/Exelord/ember-rollbar-client/tree/v0.4.0) (2017-09-06)
+[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.3.4...v0.4.0)
+
+**Implemented enhancements:**
+
+- Upgrades packages [\#7](https://github.com/Exelord/ember-rollbar-client/pull/7) ([Exelord](https://github.com/Exelord))
+- Upgrades packages [\#3](https://github.com/Exelord/ember-rollbar-client/pull/3) ([Exelord](https://github.com/Exelord))
+
 ## [v0.3.4](https://github.com/Exelord/ember-rollbar-client/tree/v0.3.4) (2017-06-22)
 [Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.3.3...v0.3.4)
 
