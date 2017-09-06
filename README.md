@@ -12,7 +12,6 @@ The Rollbar client for EmberJS applications.
 - Automatic logger for:
   - `js window` errors
   - `ember` errors
-  - `rsvp` errors
 - No `Bower` dependency
 - Fastboot compatible
 - Practical wrapper with access to pure `Rollbar`
@@ -72,6 +71,27 @@ this.set('rollbar.currentUser', { email: 'user@email.com', id: 66 })
 If you can not find in our API a proper wrapper, you can always use the current Rollbar instance:
 ```js
 this.get('rollbar.notifier')
+```
+
+### Support error handling from RSVP
+Create the following instance initializer in your app:
+
+```js
+// app/instance-initializer/rsvp-error-handler.js
+import RSVP from "rsvp";
+
+export function initialize(appInstance) {
+  let rollbarService = appInstance.lookup('service:rollbar');
+
+  RSVP.on('error', function(reason) {
+    rollbarService.error(reason);
+  });
+}
+
+export default {
+  name: 'rsvp-error-handler',
+  initialize
+};
 ```
 
 ### Create new Rollbar instance
