@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import Rollbar from 'rollbar';
-import _merge from 'lodash/merge';
+import deepMerge from 'lodash/merge';
 
 export default Ember.Service.extend({
   currentUser: null,
@@ -15,7 +15,7 @@ export default Ember.Service.extend({
   }),
 
   rollbarClient(customConfig = {}) {
-    let config = _merge(this.get('config'), customConfig);
+    let config = deepMerge(this.get('config'), customConfig);
     return new Rollbar(config);
   },
 
