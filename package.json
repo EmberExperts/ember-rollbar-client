@@ -23,7 +23,7 @@
   "dependencies": {
     "broccoli-funnel": "2.0.1",
     "ember-cli-babel": "6.8.2",
-    "rollbar": "~2.2.7"
+    "rollbar": "~2.2.8"
   },
   "devDependencies": {
     "bootstrap-sass": "3.3.7",
@@ -50,7 +50,6 @@
     "ember-load-initializers": "1.0.0",
     "ember-resolver": "4.5.0",
     "ember-scroll-to": "0.6.4",
-    "ember-source": "~2.15.0",
     "loader.js": "4.6.0"
   },
   "engines": {
