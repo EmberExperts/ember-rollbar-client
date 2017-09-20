@@ -95,4 +95,27 @@ test('registerLogger: does not register logger if disabled', function(assert) {
   };
   service.registerLogger();
   Ember.onerror();
+});
+
+test('config: rollbar passes arguments to checkIgnore callback', function (assert) {
+  assert.expect(3);
+
+  let service = this.subject({
+    config: {
+      enabled: true,
+      checkIgnore: function(isUnchaught, args, payload) {
+        assert.equal(false, isUnchaught);
+        assert.deepEqual(args[0], {
+          msg: 'error',
+          code: 1
+        });
+        assert.ok(payload);
+        return true;
+      }
+    }
+  });
+  service.error({
+    msg: 'error',
+    code: 1
+  });
 })
