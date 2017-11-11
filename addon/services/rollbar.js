@@ -10,11 +10,14 @@ export default Ember.Service.extend({
   }),
 
   config: Ember.computed(function() {
-    return Ember.getOwner(this).resolveRegistration('config:environment').emberRollbarClient;
+    const applicationConfig = Ember.getOwner(this).resolveRegistration('config:environment');
+    const code_version = applicationConfig.APP.version;
+    const userConfig = applicationConfig.emberRollbarClient;
+    return Ember.assign({ code_version }, userConfig);
   }),
 
   rollbarClient(customConfig = {}) {
-    let config = Ember.assign(this.get('config'), customConfig);
+    const config = Ember.assign(this.get('config'), customConfig);
     return new Rollbar(config);
   },
 
