@@ -46,6 +46,21 @@ test('debug', function(assert) {
   assert.ok(uuid);
 });
 
+test('config with default value for code version', function(assert) {
+  let service = this.subject();
+  let currentVersion = Ember.getOwner(this).resolveRegistration('config:environment').APP.version
+  assert.equal(service.get('config').code_version, currentVersion);
+});
+
+test('config custom value for code version', function(assert) {
+  let service = this.subject({
+    config: {
+      code_version: '1.2.3'
+    }
+  });
+  assert.equal(service.get('config').code_version, '1.2.3');
+});
+
 test('registerLogger: register error handler for Ember errors if enabled', function(assert) {
   assert.expect(2);
   let service = this.subject({
