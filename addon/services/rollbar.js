@@ -10,9 +10,9 @@ export default Ember.Service.extend({
   }),
 
   config: Ember.computed(function() {
-    const applicationConfig = Ember.getOwner(this).resolveRegistration('config:environment');
-    const code_version = applicationConfig.APP.version;
-    const userConfig = applicationConfig.emberRollbarClient;
+    let applicationConfig = Ember.getOwner(this).resolveRegistration('config:environment');
+    let code_version = applicationConfig.APP.version;
+    let userConfig = applicationConfig.emberRollbarClient;
     if ( !userConfig.payload.client.javascript.code_version ) {
       userConfig.payload.client.javascript.code_version = code_version;
     }
@@ -20,7 +20,7 @@ export default Ember.Service.extend({
   }),
 
   rollbarClient(customConfig = {}) {
-    const config = Ember.assign(this.get('config'), customConfig);
+    let config = Ember.assign(this.get('config'), customConfig);
     return new Rollbar(config);
   },
 
