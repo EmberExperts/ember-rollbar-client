@@ -118,6 +118,7 @@ You can overwrite Rollbar configuration in environment's config. Here is the def
         source_map_enabled: true,
         guess_uncaught_frames: true
         // code_version: "some version string, such as a version number or git sha",
+        // leave empty to use application version which is a default value
       }
     }
   }
