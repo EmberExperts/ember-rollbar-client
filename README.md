@@ -117,7 +117,7 @@ You can overwrite Rollbar configuration in environment's config. Here is the def
       javascript: {
         source_map_enabled: true,
         guess_uncaught_frames: true
-        // code_version: "some version string, such as a version number or git sha",
+        code_version: "YOUR_APP_VERSION" // returns app version in format: 2.4.0+06df23a
         // leave empty to use application version which is a default value
       }
     }
