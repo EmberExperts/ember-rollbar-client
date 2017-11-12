@@ -53,6 +53,7 @@
     "ember-resolver": "4.5.0",
     "ember-scroll-to": "0.6.4",
     "ember-source": "~2.16.2",
+    "eslint-plugin-ember": "^4.6.1",
     "loader.js": "4.6.0"
   },
   "engines": {

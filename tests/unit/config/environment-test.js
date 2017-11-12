@@ -1,9 +1,9 @@
-import Ember from 'ember';
+import { getOwner } from '@ember/application';
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('config:environment', 'Unit | Config | environment', {
   subject() {
-    return Ember.getOwner(this).resolveRegistration('config:environment');
+    return getOwner(this).resolveRegistration('config:environment');
   }
 });
 
