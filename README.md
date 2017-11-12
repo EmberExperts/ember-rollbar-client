@@ -101,6 +101,17 @@ You can use `rollbarClient` function of the `Rollbar Service` to create a new in
 this.get('rollbar').rollbarClient(/* config */)
 ```
 
+### Support code_version on Heroku build
+Add at the bottom of your `config/environment.js` file:
+```js
+// Heroku Git Hash support
+if (process.env.SOURCE_VERSION) {
+  let packageJson = require('../package.json');
+  let gitHash = process.env.SOURCE_VERSION.substr(0, 7);
+  ENV.emberRollbarClient.payload.client.javascript['code_version'] = `${packageJson.version}+${gitHash}`;
+}
+```
+
 ## Configuration
 You can overwrite Rollbar configuration in environment's config. Here is the default config:
 

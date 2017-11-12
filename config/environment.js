@@ -2,17 +2,8 @@
 'use strict';
 
 function codeVersion() {
-  // Heroku Git Hash support
-  if (process.env.SOURCE_VERSION) {
-    let packageJson = require('../package.json');
-    let gitHash = process.env.SOURCE_VERSION.substr(0, 7);
-
-    return `${packageJson.version}+${gitHash}`;
-  } else {
-    let gitRepoVersion = require('git-repo-version');
-
-    return gitRepoVersion({ shaLength: 7 });
-  }
+  let gitRepoVersion = require('git-repo-version');
+  return gitRepoVersion({ shaLength: 7 });
 }
 
 module.exports = function(environment, appConfig) {
