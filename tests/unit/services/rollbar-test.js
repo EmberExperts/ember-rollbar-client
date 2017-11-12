@@ -2,7 +2,7 @@ import { moduleFor, test } from 'ember-qunit';
 import Rollbar from 'rollbar';
 
 moduleFor('service:rollbar', 'Unit | Service | rollbar', {
-  needs: ['config:environment'],
+  needs: ['config:environment']
 });
 
 test('it exists', function(assert) {
