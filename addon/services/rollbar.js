@@ -15,7 +15,7 @@ export default Ember.Service.extend({
   }),
 
   rollbarClient(customConfig = {}) {
-    let config = deepMerge(this.get('config'), customConfig);
+    let config = deepMerge({}, this.get('config'), customConfig);
     return new Rollbar(config);
   },
 
