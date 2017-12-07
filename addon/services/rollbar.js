@@ -1,14 +1,24 @@
 import { getOwner } from '@ember/application';
 import { computed } from '@ember/object';
-import { reads } from '@ember/object/computed';
 import Service from '@ember/service';
 import Rollbar from 'rollbar';
 import deepMerge from 'lodash/merge';
 
 export default Service.extend({
-  enabled: reads('config.enabled'),
+  enabled: computed({
+    get() {
+      return this.get('config.enabled');
+    },
+
+    set(key, value) {
+      this.get('notifier').configure({ enabled: value });
+      return value;
+    }
+  }),
 
   currentUser: computed({
+    get() {},
+
     set(key, value) {
       this.get('notifier').configure({ payload: { person: value } });
       return value;
