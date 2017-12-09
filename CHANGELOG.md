@@ -1,7 +1,14 @@
 # Change Log
 
-## [0.5.0](https://github.com/Exelord/ember-rollbar-client/tree/0.5.0) (2017-12-03)
-[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.4.0...0.5.0)
+## [v0.5.1](https://github.com/Exelord/ember-rollbar-client/tree/v0.5.1) (2017-12-09)
+[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.5.0...v0.5.1)
+
+**Fixed bugs:**
+
+- Fix computed properties [\#15](https://github.com/Exelord/ember-rollbar-client/pull/15) ([Exelord](https://github.com/Exelord))
+
+## [v0.5.0](https://github.com/Exelord/ember-rollbar-client/tree/v0.5.0) (2017-12-03)
+[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.4.0...v0.5.0)
 
 **Implemented enhancements:**
 
