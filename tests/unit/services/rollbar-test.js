@@ -10,6 +10,25 @@ test('it exists', function(assert) {
   assert.ok(service);
 });
 
+test('enabled', function(assert) {
+  let service = this.subject();
+  assert.equal(service.get('enabled'), false);
+
+  service.set('enabled', true)
+  assert.equal(service.get('enabled'), true);
+  assert.equal(service.get('notifier.options.enabled'), true);
+});
+
+test('currentUser', function(assert) {
+  let service = this.subject();
+  assert.equal(service.get('currentUser'), null);
+
+  let user = { name: 'User' };
+  service.set('currentUser', user);
+  assert.equal(service.get('currentUser'), user);
+  assert.equal(service.get('notifier.options.payload.person.name'), 'User');
+});
+
 test('notifier', function(assert) {
   let service = this.subject();
   assert.ok(service.get('notifier') instanceof Rollbar);
