@@ -1,8 +1,13 @@
 import { moduleFor, test } from 'ember-qunit';
 import Rollbar from 'rollbar';
+import Ember from "ember";
 
 moduleFor('service:rollbar', 'Unit | Service | rollbar', {
-  needs: ['config:environment']
+  needs: ['config:environment'],
+
+  afterEach() {
+    Ember.onerror = undefined;
+  }
 });
 
 test('it exists', function(assert) {
@@ -14,8 +19,9 @@ test('enabled', function(assert) {
   let service = this.subject();
   assert.equal(service.get('enabled'), false);
 
-  service.set('enabled', true)
+  service.set('enabled', true);
   assert.equal(service.get('enabled'), true);
+  assert.ok(Ember.onerror);
   assert.equal(service.get('notifier.options.enabled'), true);
 });
 
