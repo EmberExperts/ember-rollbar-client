@@ -61,6 +61,6 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
-    "demoURL": "https://github.com/Exelord/ember-rollbar-client/"
+    "demoURL": "https://exelord.github.io/ember-rollbar-client/"
   }
 }
