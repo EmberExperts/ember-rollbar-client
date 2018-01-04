@@ -1,13 +1,13 @@
 import Ember from 'ember';
-import EmberObject from '@ember/object';
 import Application from '@ember/application';
 import { run } from '@ember/runloop';
 import { initialize } from 'dummy/instance-initializers/rollbar';
 import { module, test } from 'qunit';
 import destroyApp from '../../helpers/destroy-app';
+import RollbarService from 'dummy/services/rollbar';
 
 function createRollbarMock(assert, options = {}) {
-  return EmberObject.extend({
+  return RollbarService.extend({
     enabled: true,
 
     error(message) {
@@ -26,6 +26,7 @@ module('Unit | Instance Initializer | rollbar', {
   },
 
   afterEach() {
+    Ember.onerror = undefined;
     run(this.appInstance, 'destroy');
     destroyApp(this.application);
   },
@@ -37,6 +38,11 @@ test('register error handler for Ember errors', function(assert) {
 
   initialize(this.appInstance);
   Ember.onerror('foo');
+});
+
+test('does not set Ember.onerror if disabled', function(assert) {
+  this.appInstance.register('service:rollbar', createRollbarMock(assert, { enabled: false }));
+  assert.notOk(Ember.onerror);
 });
 
 test('error handler does not override previous hook', function(assert) {
@@ -62,4 +68,4 @@ test('error handler does not fire error if disabled', function(assert) {
 
   initialize(this.appInstance);
   Ember.onerror();
-})
+});

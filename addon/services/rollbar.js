@@ -3,8 +3,14 @@ import { computed } from '@ember/object';
 import Service from '@ember/service';
 import Rollbar from 'rollbar';
 import deepMerge from 'lodash/merge';
+import Ember from "ember";
 
 export default Service.extend({
+  init() {
+    this._super(...arguments);
+    this.set('oldOnError', Ember.onerror);
+  },
+
   enabled: computed({
     get() {
       return this.get('config.enabled');
@@ -12,9 +18,24 @@ export default Service.extend({
 
     set(key, value) {
       this.get('notifier').configure({ enabled: value });
+      this.registerHandler(value);
       return value;
     }
   }),
+
+  registerHandler(enabled) {
+    if (enabled) {
+      this.set('oldOnError', Ember.onerror);
+      let oldOnError = Ember.onerror || function() {};
+
+      Ember.onerror = (...args) => {
+        oldOnError(...args);
+        this.error(...args);
+      };
+    } else {
+      Ember.onerror = this.get('oldOnError');
+    }
+  },
 
   currentUser: computed({
     get() {},
