@@ -25,12 +25,12 @@ The Rollbar client for EmberJS applications.
 ```js
   module.exports = function(environment) {
     var ENV = {
-      'emberRollbarClient': {
+      emberRollbarClient: {
         accessToken: 'rollbar-write-client-token',
         // By default Rollbar logging is enabled in every environment except test and development.
         // Here is an example if you want to use it only in production
         enabled: environment === 'production'
-      };
+      }
     };
 
     return ENV;
