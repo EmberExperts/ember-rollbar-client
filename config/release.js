@@ -1,17 +1,17 @@
-/* eslint-env node */
+'use strict';
+
 const fs = require('fs');
-const RSVP = require('rsvp');
 const path = require('path');
-const { exec } = require('child_process');
+const exec = require('child_process').exec;
 
 function generateChangelog(project, version) {
   let content = `future-release=${version}\n`;
   let generatorPath = path.join(project.root, '.github_changelog_generator');
 
-  return new RSVP.Promise(function(resolve, reject) {
+  return new Promise(function(resolve, reject) {
     fs.writeFile(generatorPath, content, (err) => err ? reject(err) : resolve());
   }).then(() => {
-    return new RSVP.Promise(function(resolve, reject) {
+    return new Promise(function(resolve, reject) {
       exec('github_changelog_generator', (err) => err ? reject(err) : resolve());
     });
   })
@@ -20,7 +20,7 @@ function generateChangelog(project, version) {
 function generateWebsite(version) {
   let command = `ember github-pages:commit --message "${version}" && git push origin gh-pages:gh-pages`;
 
-  return new RSVP.Promise(function(resolve, reject) {
+  return new Promise(function(resolve, reject) {
     exec(command, (err) => err ? reject(err) : resolve());
   });
 }
