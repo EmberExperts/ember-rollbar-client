@@ -10,6 +10,10 @@ export function initialize(appInstance) {
     if (rollbarService.get('enabled')) {
       rollbarService.error(...args);
     }
+
+    if (Ember.testing) {
+      throw args[0];
+    }
   };
 }
 

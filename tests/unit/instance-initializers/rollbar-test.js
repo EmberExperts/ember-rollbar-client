@@ -6,13 +6,15 @@ import { initialize } from 'dummy/instance-initializers/rollbar';
 import { module, test } from 'qunit';
 import destroyApp from '../../helpers/destroy-app';
 
+const onError = Ember.onerror;
+
 function createRollbarMock(assert, options = {}) {
   return EmberObject.extend({
     enabled: true,
 
-    error(message) {
+    error(error) {
       assert.ok(true);
-      assert.equal(message, 'foo');
+      assert.equal(error.message, 'foo');
     }
   }, options);
 }
@@ -26,34 +28,38 @@ module('Unit | Instance Initializer | rollbar', {
   },
 
   afterEach() {
+    Ember.onerror = onError;
     run(this.appInstance, 'destroy');
     destroyApp(this.application);
   },
 });
 
 test('register error handler for Ember errors', function(assert) {
-  assert.expect(2);
+  assert.expect(3);
+  let error = new Error('foo');
   this.appInstance.register('service:rollbar', createRollbarMock(assert));
 
   initialize(this.appInstance);
-  Ember.onerror('foo');
+  assert.throws(() => Ember.onerror(error), error);
 });
 
 test('error handler does not override previous hook', function(assert) {
-  assert.expect(4);
+  assert.expect(5);
+  let error = new Error('foo');
   this.appInstance.register('service:rollbar', createRollbarMock(assert));
 
-  Ember.onerror = function(message) {
+  Ember.onerror = function(error) {
     assert.ok(true);
-    assert.equal(message, 'foo');
+    assert.equal(error.message, 'foo');
   };
 
   initialize(this.appInstance);
-  Ember.onerror('foo');
+  assert.throws(() => Ember.onerror(error), error);
 });
 
 test('error handler does not fire error if disabled', function(assert) {
-  assert.expect(1);
+  assert.expect(2);
+  let error = new Error('foo');
   this.appInstance.register('service:rollbar', createRollbarMock(assert, { enabled: false }));
 
   Ember.onerror = function() {
@@ -61,5 +67,5 @@ test('error handler does not fire error if disabled', function(assert) {
   };
 
   initialize(this.appInstance);
-  Ember.onerror();
+  assert.throws(() => Ember.onerror(error), error);
 })
