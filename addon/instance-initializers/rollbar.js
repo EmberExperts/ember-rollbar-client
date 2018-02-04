@@ -6,12 +6,13 @@ export function initialize(appInstance) {
 
   Ember.onerror = (...args) => {
     oldOnError(...args);
+    let enabled = rollbarService.get('enabled');
 
-    if (rollbarService.get('enabled')) {
+    if (enabled) {
       rollbarService.error(...args);
     }
 
-    if (Ember.testing) {
+    if (!enabled || Ember.testing) {
       throw args[0];
     }
   };
