@@ -1,6 +1,6 @@
 {
   "name": "ember-rollbar-client",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "The Rollbar client for Ember applications.",
   "keywords": [
     "ember-addon",

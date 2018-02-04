@@ -1,5 +1,22 @@
 # Change Log
 
+## [v0.5.2](https://github.com/Exelord/ember-rollbar-client/tree/v0.5.2) (2018-02-04)
+[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.5.1...v0.5.2)
+
+**Fixed bugs:**
+
+- Throw errors when rollbar is disabled [\#26](https://github.com/Exelord/ember-rollbar-client/pull/26) ([Exelord](https://github.com/Exelord))
+- Fix travis and rethrow errors in tests [\#25](https://github.com/Exelord/ember-rollbar-client/pull/25) ([Exelord](https://github.com/Exelord))
+
+**Closed issues:**
+
+- Latest version 0.5.0 breaks all the things [\#14](https://github.com/Exelord/ember-rollbar-client/issues/14)
+
+**Merged pull requests:**
+
+- Readme: fix syntax error in code sample [\#21](https://github.com/Exelord/ember-rollbar-client/pull/21) ([lolmaus](https://github.com/lolmaus))
+- Fix demoURL in package.json [\#20](https://github.com/Exelord/ember-rollbar-client/pull/20) ([lolmaus](https://github.com/lolmaus))
+
 ## [v0.5.1](https://github.com/Exelord/ember-rollbar-client/tree/v0.5.1) (2017-12-09)
 [Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.5.0...v0.5.1)
 
