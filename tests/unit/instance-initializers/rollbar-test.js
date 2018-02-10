@@ -75,4 +75,103 @@ test('error handler reacts on enabled state', function(assert) {
   this.appInstance.lookup('service:rollbar').set('enabled', true);
   initialize(this.appInstance);
   assert.throws(() => Ember.onerror(error), error);
-})
+});
+
+test('registers rollbar in error logger', function(assert) {
+  assert.expect(4);
+
+  Ember.Logger.error = function(message) {
+    assert.ok(true);
+    assert.equal(message, 'error');
+  };
+
+  this.appInstance.register('service:rollbar', createRollbarMock(assert, {
+    error(message) {
+      assert.ok(true);
+      assert.equal(message, 'error');
+    }
+  }));
+
+  initialize(this.appInstance);
+
+  Ember.Logger.error('error');
+});
+
+test('registers rollbar in debug logger', function(assert) {
+  assert.expect(4);
+
+  Ember.Logger.debug = function(message) {
+    assert.ok(true);
+    assert.equal(message, 'debug');
+  };
+
+  this.appInstance.register('service:rollbar', createRollbarMock(assert, {
+    debug(message) {
+      assert.ok(true);
+      assert.equal(message, 'debug');
+    }
+  }));
+
+  initialize(this.appInstance);
+  Ember.Logger.debug('debug')
+});
+
+test('registers rollbar in info logger', function(assert) {
+  assert.expect(4);
+
+  Ember.Logger.info = function(message) {
+    assert.ok(true);
+    assert.equal(message, 'info');
+  };
+
+  this.appInstance.register('service:rollbar', createRollbarMock(assert, {
+    info(message) {
+      assert.ok(true);
+      assert.equal(message, 'info');
+    }
+  }));
+
+  initialize(this.appInstance);
+
+  Ember.Logger.info('info')
+});
+
+test('registers rollbar in warn logger', function(assert) {
+  assert.expect(4);
+
+  Ember.Logger.warn = function(message) {
+    assert.ok(true);
+    assert.equal(message, 'warn');
+  };
+
+  this.appInstance.register('service:rollbar', createRollbarMock(assert, {
+    warning(message) {
+      assert.ok(true);
+      assert.equal(message, 'warn');
+    }
+  }));
+
+  initialize(this.appInstance);
+
+  Ember.Logger.warn('warn')
+});
+
+test('registers rollbar in assert logger', function(assert) {
+  assert.expect(4);
+
+  Ember.Logger.assert = function(message, bool) {
+    assert.notOk(bool);
+    assert.equal(message, 'assert');
+  };
+
+  this.appInstance.register('service:rollbar', createRollbarMock(assert, {
+    error(message) {
+      assert.ok(true);
+      assert.equal(message, 'assert');
+    }
+  }));
+
+  initialize(this.appInstance);
+
+  Ember.Logger.assert('assert', false)
+});
