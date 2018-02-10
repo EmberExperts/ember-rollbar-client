@@ -18,7 +18,4 @@ export function initialize(appInstance) {
   };
 }
 
-export default {
-  name: 'rollbar',
-  initialize
-};
+export default { initialize };
