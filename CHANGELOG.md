@@ -1,5 +1,16 @@
 # Change Log
 
+## [v0.6.0](https://github.com/Exelord/ember-rollbar-client/tree/v0.6.0) (2018-02-10)
+[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.5.2...v0.6.0)
+
+**Implemented enhancements:**
+
+- Upgrades [\#24](https://github.com/Exelord/ember-rollbar-client/pull/24) ([Exelord](https://github.com/Exelord))
+
+**Closed issues:**
+
+- Exceptions thrown in development aren't logged to the console [\#18](https://github.com/Exelord/ember-rollbar-client/issues/18)
+
 ## [v0.5.2](https://github.com/Exelord/ember-rollbar-client/tree/v0.5.2) (2018-02-04)
 [Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.5.1...v0.5.2)
 
