@@ -1,11 +1,10 @@
-import Ember from 'ember';
+import { initialize } from 'ember-rollbar-client/instance-initializers/rollbar';
 import { module, test } from 'qunit';
 import { run } from '@ember/runloop';
 import { getApplication } from '@ember/test-helpers/application';
-import destroyApp from '../../helpers/destroy-app';
 
+import Ember from 'ember';
 import Service from '@ember/service';
-import { initialize } from 'ember-rollbar-client/instance-initializers/rollbar';
 
 const onError = Ember.onerror;
 
@@ -31,7 +30,6 @@ module('Unit | Instance Initializer | rollbar', {
   afterEach() {
     Ember.onerror = onError;
     run(this.appInstance, 'destroy');
-    destroyApp(this.application);
   }
 });
 
