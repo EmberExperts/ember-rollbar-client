@@ -1,5 +1,13 @@
 # Change Log
 
+## [v0.7.0](https://github.com/Exelord/ember-rollbar-client/tree/v0.7.0) (2018-02-18)
+[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.6.0...v0.7.0)
+
+**Implemented enhancements:**
+
+- Ember 3.0 [\#28](https://github.com/Exelord/ember-rollbar-client/pull/28) ([Exelord](https://github.com/Exelord))
+- Remove funnel [\#27](https://github.com/Exelord/ember-rollbar-client/pull/27) ([Exelord](https://github.com/Exelord))
+
 ## [v0.6.0](https://github.com/Exelord/ember-rollbar-client/tree/v0.6.0) (2018-02-10)
 [Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.5.2...v0.6.0)
 
