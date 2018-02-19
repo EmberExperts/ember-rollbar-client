@@ -1,8 +1,17 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/Exelord/ember-rollbar-client/master/logo.png" alt="Ember Rollbar Client Logo" width="100%">
 
-  <a href='https://travis-ci.org/Exelord/ember-rollbar-client'><img src="https://travis-ci.org/Exelord/ember-rollbar-client.svg?branch=master" alt="Dependency Status" /></a> <a href='https://gemnasium.com/github.com/Exelord/ember-rollbar-client'><img src="https://gemnasium.com/badges/github.com/Exelord/ember-rollbar-client.svg" alt="Dependency Status" /></a>
-  <a href='https://gitter.im/Exelord/ember-rollbar-client?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge'><img src="https://badges.gitter.im/Exelord/ember-rollbar-client.svg" alt="Gitter" /></a>
+  <a href='https://travis-ci.org/Exelord/ember-rollbar-client'>
+    <img src="https://travis-ci.org/Exelord/ember-rollbar-client.svg?branch=master" alt="Dependency Status" />
+  </a>
+
+  <a href="https://david-dm.org/exelord/ember-rollbar-client" title="dependencies status">
+    <img src="https://david-dm.org/exelord/ember-rollbar-client/status.svg"/>
+  </a>
+
+  <a href='https://gitter.im/Exelord/ember-rollbar-client?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge'>
+    <img src="https://badges.gitter.im/Exelord/ember-rollbar-client.svg" alt="Gitter" />
+  </a>
 </p>
 
 ___
@@ -25,12 +34,12 @@ The Rollbar client for EmberJS applications.
 ```js
   module.exports = function(environment) {
     var ENV = {
-      'emberRollbarClient': {
+      emberRollbarClient: {
         accessToken: 'rollbar-write-client-token',
         // By default Rollbar logging is enabled in every environment except test and development.
         // Here is an example if you want to use it only in production
         enabled: environment === 'production'
-      };
+      }
     };
 
     return ENV;

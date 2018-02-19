@@ -1,33 +1,42 @@
-import Ember from 'ember';
+import { getOwner } from '@ember/application';
+import { computed } from '@ember/object';
+import Service from '@ember/service';
 import Rollbar from 'rollbar';
 import deepMerge from 'lodash/merge';
 
-export default Ember.Service.extend({
-  currentUser: null,
-  enabled: Ember.computed.readOnly('config.enabled'),
+export default Service.extend({
+  enabled: computed({
+    get() {
+      return this.get('config.enabled');
+    },
 
-  notifier: Ember.computed(function() {
+    set(key, value) {
+      this.get('notifier').configure({ enabled: value });
+      return value;
+    }
+  }),
+
+  currentUser: computed({
+    get() {},
+
+    set(key, value) {
+      this.get('notifier').configure({ payload: { person: value } });
+      return value;
+    }
+  }),
+
+  notifier: computed(function() {
     return this.rollbarClient();
-  }),
+  }).readOnly(),
 
-  config: Ember.computed(function() {
-    return Ember.getOwner(this).resolveRegistration('config:environment').emberRollbarClient;
-  }),
+  config: computed(function() {
+    return getOwner(this).resolveRegistration('config:environment').emberRollbarClient;
+  }).readOnly(),
 
   rollbarClient(customConfig = {}) {
     let config = deepMerge({}, this.get('config'), customConfig);
     return new Rollbar(config);
   },
-
-  // Observers
-
-  currentUserChanged: Ember.observer('currentUser', function() {
-    return this.get('notifier').configure({ payload: { person: this.get('currentUser') } });
-  }),
-
-  enabledChanged: Ember.observer('enabled', function() {
-    return this.get('notifier').configure({ enabled: this.get('enabled') });
-  }),
 
   // Notifications
 
@@ -49,16 +58,5 @@ export default Ember.Service.extend({
 
   debug(message, data = {}) {
     return this.get('notifier').debug(message, data);
-  },
-
-  registerLogger() {
-    if (this.get('enabled')) {
-      let oldOnError = Ember.onerror || function() {};
-
-      Ember.onerror = (...args) => {
-        oldOnError(...args);
-        this.error(...args);
-      };
-    }
   }
 });

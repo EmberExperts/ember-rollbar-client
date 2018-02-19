@@ -1,31 +1,76 @@
-import Ember from 'ember';
-import { initialize } from 'dummy/instance-initializers/rollbar';
+import { initialize } from 'ember-rollbar-client/instance-initializers/rollbar';
 import { module, test } from 'qunit';
-import destroyApp from '../../helpers/destroy-app';
+import { run } from '@ember/runloop';
+import { getApplication } from '@ember/test-helpers/application';
+
+import Ember from 'ember';
+import Service from '@ember/service';
+
+const onError = Ember.onerror;
+
+function createRollbarMock(assert, options = {}) {
+  return Service.extend({
+    enabled: true,
+
+    error(error) {
+      assert.ok(true);
+      assert.equal(error.message, 'foo');
+    }
+  }, options);
+}
 
 module('Unit | Instance Initializer | rollbar', {
   beforeEach() {
-    Ember.run(() => {
-      this.application = Ember.Application.create();
+    run(() => {
+      this.application = getApplication()
       this.appInstance = this.application.buildInstance();
     });
   },
+
   afterEach() {
-    Ember.run(this.appInstance, 'destroy');
-    destroyApp(this.application);
-  },
+    Ember.onerror = onError;
+    run(this.appInstance, 'destroy');
+  }
 });
 
-function createRollbarMock(assert) {
-  return Ember.Object.extend({
-    registerLogger() {
-      assert.ok(true);
-    }
-  });
-}
+test('register error handler for Ember errors', function(assert) {
+  assert.expect(3);
 
-test('invokes registerLogger', function(assert) {
-  assert.expect(1);
-  this.appInstance.register('service:rollbar', createRollbarMock(assert))
+  Ember.onerror = onError;
+  let error = new Error('foo');
+  this.appInstance.register('service:rollbar', createRollbarMock(assert));
+
   initialize(this.appInstance);
+  assert.throws(() => Ember.onerror(error), error);
 });
+
+test('error handler does not override previous hook', function(assert) {
+  assert.expect(5);
+  let error = new Error('foo');
+  this.appInstance.register('service:rollbar', createRollbarMock(assert));
+
+  Ember.onerror = function(error) {
+    assert.ok(true);
+    assert.equal(error.message, 'foo');
+  };
+
+  initialize(this.appInstance);
+  assert.throws(() => Ember.onerror(error), error);
+});
+
+test('error handler reacts on enabled state', function(assert) {
+  assert.expect(7);
+  let error = new Error('foo');
+  this.appInstance.register('service:rollbar', createRollbarMock(assert));
+
+  initialize(this.appInstance);
+  assert.throws(() => Ember.onerror(error), error);
+
+  this.appInstance.lookup('service:rollbar').set('enabled', false);
+  initialize(this.appInstance);
+  assert.throws(() => Ember.onerror(error), error);
+
+  this.appInstance.lookup('service:rollbar').set('enabled', true);
+  initialize(this.appInstance);
+  assert.throws(() => Ember.onerror(error), error);
+})
