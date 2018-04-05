@@ -1,0 +1,17 @@
+{
+  "assets": {
+    "assets/assetMap.json": "assets/assetMap.json",
+    "assets/dummy-fastboot.js": "assets/dummy-fastboot-bfb3e3b60c4a7a7819c7c0eef4e452b5.js",
+    "assets/dummy-fastboot.map": "assets/dummy-fastboot-41cf34cef1defdd51e697e1fbe1c2f89.map",
+    "assets/dummy.css": "assets/dummy-e60a562f966aa69242d8a0c20897022a.css",
+    "assets/dummy.js": "assets/dummy-9f5a958382e3b9e88a8046f643a7a30c.js",
+    "assets/dummy.map": "assets/dummy-88cf9dda3ab8a002ec140fa9847b15f3.map",
+    "assets/vendor.css": "assets/vendor-17ce9a4e5964c82dbc2dc79cee797f1d.css",
+    "assets/vendor.js": "assets/vendor-b4f243be5b13e617966fdb441967e673.js",
+    "assets/vendor.map": "assets/vendor-3359960d68da1dab24f4f0b6fff267ad.map",
+    "images/atom.png": "images/atom-8da5d02e2322e8ccb9a38b440e1be542.png",
+    "images/logo.png": "images/logo-508e6f3d541f093c5c0f235bbc594e76.png",
+    "images/og-image.jpg": "images/og-image-5291e5b707999bad66ba623b2b1fcb62.jpg"
+  },
+  "prepend": ""
+}
