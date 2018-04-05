@@ -1,5 +1,16 @@
 # Change Log
 
+## [v0.7.1](https://github.com/Exelord/ember-rollbar-client/tree/v0.7.1) (2018-04-05)
+[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.7.0...v0.7.1)
+
+**Fixed bugs:**
+
+- Errors crash server in development mode [\#29](https://github.com/Exelord/ember-rollbar-client/issues/29)
+
+**Merged pull requests:**
+
+- Fix throwing errors in fastboot [\#30](https://github.com/Exelord/ember-rollbar-client/pull/30) ([Exelord](https://github.com/Exelord))
+
 ## [v0.7.0](https://github.com/Exelord/ember-rollbar-client/tree/v0.7.0) (2018-02-18)
 [Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.6.0...v0.7.0)
 
