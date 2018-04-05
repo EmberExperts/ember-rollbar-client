@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
+const { error } = Ember.Logger;
+
 export function initialize(appInstance) {
+  let fastbootService = appInstance.lookup('service:fastboot');
   let rollbarService = appInstance.lookup('service:rollbar');
   let oldOnError = Ember.onerror || function() {};
 
@@ -13,7 +16,11 @@ export function initialize(appInstance) {
     }
 
     if (!enabled || Ember.testing) {
-      throw args[0];
+      if (fastbootService && fastbootService.get('isFastBoot')) {
+        error(args[0]);
+      } else {
+        throw args[0];
+      }
     }
   };
 }
