@@ -16,9 +16,15 @@ module.exports = {
   },
 
   treeForVendor: function() {
+    let files = ['rollbar.named-amd.js'];
+
+    if (this.app.options.sourcemaps.enabled) {
+      files.push('rollbar.named-amd.js.map');
+    }
+
     return new Funnel(this.rollbarPath(), {
       destDir: 'ember-rollbar-client',
-      files: ['rollbar.named-amd.js']
+      files,
     });
   }
 };
