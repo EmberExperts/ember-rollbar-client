@@ -2,7 +2,7 @@ import { getOwner } from '@ember/application';
 import { computed } from '@ember/object';
 import Service from '@ember/service';
 import Rollbar from 'rollbar';
-import deepMerge from 'lodash/merge';
+import { merge } from '@ember/polyfills';
 
 export default Service.extend({
   enabled: computed({
@@ -34,7 +34,7 @@ export default Service.extend({
   }).readOnly(),
 
   rollbarClient(customConfig = {}) {
-    let config = deepMerge({}, this.get('config'), customConfig);
+    let config = merge({}, this.get('config'), customConfig);
     return new Rollbar(config);
   },
 
