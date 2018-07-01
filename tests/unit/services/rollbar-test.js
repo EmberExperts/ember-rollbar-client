@@ -1,4 +1,5 @@
 import { moduleFor, test } from 'ember-qunit';
+import { getOwner } from '@ember/application';
 import Rollbar from 'rollbar';
 
 moduleFor('service:rollbar', 'Unit | Service | rollbar', {
@@ -27,6 +28,27 @@ test('currentUser', function(assert) {
   service.set('currentUser', user);
   assert.equal(service.get('currentUser'), user);
   assert.equal(service.get('notifier.options.payload.person.name'), 'User');
+});
+
+test('new rollbar client - deep merge config', function(assert) {
+  const config = getOwner(this).resolveRegistration('config:environment');
+  let { emberRollbarClient } = config;
+
+  let newClient = this.subject().rollbarClient({
+    payload: {
+      client: {
+        javascript: {
+          source_map_enabled: false
+        }
+      }
+    }
+  });
+
+  assert.deepEqual(newClient.options.payload.client.javascript, {
+    source_map_enabled: false,
+    code_version: emberRollbarClient.payload.client.javascript.code_version,
+    guess_uncaught_frames: true
+  } , 'provided config is deep merged with default');
 });
 
 test('notifier', function(assert) {

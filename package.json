@@ -22,8 +22,10 @@
     "test": "ember try:each"
   },
   "dependencies": {
+    "ember-auto-import": "^1.0.1",
     "ember-cli-babel": "6.11.0",
     "git-repo-version": "1.0.2",
+    "lodash.merge": "^4.6.1",
     "rollbar": "~2.3.1"
   },
   "devDependencies": {
@@ -50,7 +52,6 @@
     "ember-export-application-global": "2.0.0",
     "ember-font-awesome": "3.0.5",
     "ember-load-initializers": "1.0.0",
-    "ember-lodash": "4.18.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-resolver": "4.5.0",
     "ember-scroll-to": "0.6.4",
