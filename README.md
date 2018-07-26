@@ -28,7 +28,7 @@ The Rollbar client for EmberJS applications.
 
 # Getting started
 
-## Instalation
+## Installation
 1. `ember install ember-rollbar-client`
 2. Add your `accessToken` in `config/environment.js`
 ```js

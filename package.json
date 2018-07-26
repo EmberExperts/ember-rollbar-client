@@ -22,6 +22,7 @@
     "test": "ember try:each"
   },
   "dependencies": {
+    "broccoli-funnel": "^2.0.1",
     "ember-cli-babel": "6.11.0",
     "git-repo-version": "1.0.2",
     "rollbar": "~2.3.1"
@@ -53,7 +54,7 @@
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-resolver": "4.5.0",
     "ember-scroll-to": "0.6.4",
-    "ember-source": "~3.0.0-beta.6",
+    "ember-source": "~2.12.0",
     "ember-source-channel-url": "^1.0.1",
     "ember-try": "^0.2.23",
     "eslint-plugin-ember": "5.0.3",
