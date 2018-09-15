@@ -6,13 +6,21 @@ const Funnel = require('broccoli-funnel');
 module.exports = {
   name: 'ember-rollbar-client',
 
+  importTransforms: require('ember-cli-cjs-transform').importTransforms,
+
   included: function(app) {
     this._super.included(app);
     app.import('vendor/ember-rollbar-client/rollbar.named-amd.js');
+    app.import('node_modules/lodash.merge/index.js', {
+      using: [
+        { transformation: 'cjs', as: 'lodash.merge' }
+      ]
+    });
   },
 
   rollbarPath: function() {
-    return path.join(this.app.project.root, 'node_modules', 'rollbar', 'dist');
+    var rollbarPath = path.dirname(this.project.resolveSync('rollbar/package.json'));
+    return path.join(rollbarPath, 'dist');
   },
 
   treeForVendor: function() {
