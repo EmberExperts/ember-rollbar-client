@@ -1,5 +1,26 @@
 # Change Log
 
+## [v0.8.0](https://github.com/Exelord/ember-rollbar-client/tree/v0.8.0) (2018-09-25)
+[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.7.1...v0.8.0)
+
+**Implemented enhancements:**
+
+- Upgrades to 3.4 [\#40](https://github.com/Exelord/ember-rollbar-client/pull/40) ([Exelord](https://github.com/Exelord))
+
+**Closed issues:**
+
+- Consider removing lodash as a dependency [\#34](https://github.com/Exelord/ember-rollbar-client/issues/34)
+- Incompatibility with Ember \< 2.15 [\#32](https://github.com/Exelord/ember-rollbar-client/issues/32)
+- Add "6.0.0" value to "node\_js" entry in .travis.yml file [\#31](https://github.com/Exelord/ember-rollbar-client/issues/31)
+- Errors thrown using Ember.Logger.error are not reported [\#16](https://github.com/Exelord/ember-rollbar-client/issues/16)
+
+**Merged pull requests:**
+
+- Move to rollbar.js 2.4.x [\#38](https://github.com/Exelord/ember-rollbar-client/pull/38) ([svvitale](https://github.com/svvitale))
+- Fixed spelling mistake [\#36](https://github.com/Exelord/ember-rollbar-client/pull/36) ([Alonski](https://github.com/Alonski))
+- Remove lodash as a dependency [\#35](https://github.com/Exelord/ember-rollbar-client/pull/35) ([jonpitch](https://github.com/jonpitch))
+- Support ember 2.14 and less [\#33](https://github.com/Exelord/ember-rollbar-client/pull/33) ([svvitale](https://github.com/svvitale))
+
 ## [v0.7.1](https://github.com/Exelord/ember-rollbar-client/tree/v0.7.1) (2018-04-05)
 [Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.7.0...v0.7.1)
 
