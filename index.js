@@ -4,7 +4,7 @@ const path = require('path');
 const Funnel = require('broccoli-funnel');
 
 module.exports = {
-  name: 'ember-rollbar-client',
+  name: require('./package').name,
 
   importTransforms: require('ember-cli-cjs-transform').importTransforms,
 
