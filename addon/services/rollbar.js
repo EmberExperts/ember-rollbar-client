@@ -40,23 +40,23 @@ export default Service.extend({
 
   // Notifications
 
-  critical(message, data = {}) {
-    return this.get('notifier').critical(message, data);
+  critical(...args) {
+    return this.get('notifier').critical(...args);
   },
 
-  error(message, data = {}) {
-    return this.get('notifier').error(message, data);
+  error(...args) {
+    return this.get('notifier').error(...args);
   },
 
-  warning(message, data = {}) {
-    return this.get('notifier').warning(message, data);
+  warning(...args) {
+    return this.get('notifier').warning(...args);
   },
 
-  info(message, data = {}) {
-    return this.get('notifier').info(message, data);
+  info(...args) {
+    return this.get('notifier').info(...args);
   },
 
-  debug(message, data = {}) {
-    return this.get('notifier').debug(message, data);
+  debug(...args) {
+    return this.get('notifier').debug(...args);
   }
 });
