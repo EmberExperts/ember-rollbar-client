@@ -28,6 +28,11 @@ The Rollbar client for EmberJS applications.
 
 # Getting started
 
+## Compatibility
+
+* Ember.js v2.18 or above
+* Ember CLI v2.13 or above
+
 ## Installation
 1. `ember install ember-rollbar-client`
 2. Add your `accessToken` in `config/environment.js`
