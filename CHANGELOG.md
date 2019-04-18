@@ -1,5 +1,21 @@
 # Change Log
 
+## [v0.9.0](https://github.com/Exelord/ember-rollbar-client/tree/v0.9.0) (2019-04-18)
+[Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.8.0...v0.9.0)
+
+**Implemented enhancements:**
+
+- Updates [\#45](https://github.com/Exelord/ember-rollbar-client/pull/45) ([Exelord](https://github.com/Exelord))
+
+**Closed issues:**
+
+- Bump ember-cli-babel version [\#44](https://github.com/Exelord/ember-rollbar-client/issues/44)
+- Warning from ember-cli-cjs-transform when upgrading to 0.8.0 [\#41](https://github.com/Exelord/ember-rollbar-client/issues/41)
+
+**Merged pull requests:**
+
+- pass all log arguments [\#42](https://github.com/Exelord/ember-rollbar-client/pull/42) ([BarryThePenguin](https://github.com/BarryThePenguin))
+
 ## [v0.8.0](https://github.com/Exelord/ember-rollbar-client/tree/v0.8.0) (2018-09-25)
 [Full Changelog](https://github.com/Exelord/ember-rollbar-client/compare/v0.7.1...v0.8.0)
 
@@ -9,6 +25,7 @@
 
 **Closed issues:**
 
+- Publish new version [\#39](https://github.com/Exelord/ember-rollbar-client/issues/39)
 - Consider removing lodash as a dependency [\#34](https://github.com/Exelord/ember-rollbar-client/issues/34)
 - Incompatibility with Ember \< 2.15 [\#32](https://github.com/Exelord/ember-rollbar-client/issues/32)
 - Add "6.0.0" value to "node\_js" entry in .travis.yml file [\#31](https://github.com/Exelord/ember-rollbar-client/issues/31)
