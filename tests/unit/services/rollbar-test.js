@@ -1,6 +1,5 @@
-import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
-import { getOwner } from '@ember/application';
+import { module, test } from 'qunit';
 import Rollbar from 'rollbar';
 
 module('Unit | Service | rollbar', function(hooks) {
