@@ -1,8 +1,8 @@
 import { getOwner } from '@ember/application';
 import { computed } from '@ember/object';
 import Service from '@ember/service';
-import Rollbar from 'rollbar';
 import deepMerge from 'lodash.merge';
+import Rollbar from 'rollbar';
 
 export default Service.extend({
   enabled: computed({
