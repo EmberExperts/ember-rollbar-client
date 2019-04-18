@@ -26,9 +26,13 @@ The Rollbar client for EmberJS applications.
 - Practical wrapper with access to pure `Rollbar`
 - Compatible with Ember 2.8 and up
 
-# Getting started
+## Compatibility
+
+* Ember.js v2.18 or above
+* Ember CLI v2.13 or above
 
 ## Installation
+
 1. `ember install ember-rollbar-client`
 2. Add your `accessToken` in `config/environment.js`
 ```js
@@ -121,7 +125,7 @@ if (process.env.SOURCE_VERSION) {
 }
 ```
 
-## Configuration
+### Configuration
 You can overwrite Rollbar configuration in environment's config. Here is the default config:
 
 ``` js
@@ -145,37 +149,11 @@ You can overwrite Rollbar configuration in environment's config. Here is the def
 };
 ```
 
-# Contributing
+## Contributing
 
-## Installation
+See the [Contributing](CONTRIBUTING.md) guide for details.
 
-* `git clone https://github.com/Exelord/ember-rollbar-client`
-* `cd ember-rollbar-client`
-* `npm install`
 
-## Running
+## License
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-## Running lint
-
-* `npm run lint:hbs`
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
-
-## Running Tests
-
-* `ember test` – Runs the test suite on the current Ember version
-* `ember test --server` – Runs the test suite in "watch mode"
-* `ember try:each` – Runs the test suite against multiple Ember versions
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
-
-# License
-
-This version of the package is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+This project is licensed under the [MIT License](LICENSE.md).
