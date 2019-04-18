@@ -1,15 +1,20 @@
 import { getOwner } from '@ember/application';
-import { moduleFor, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('config:environment', 'Unit | Config | environment', {
-  subject() {
-    return getOwner(this).resolveRegistration('config:environment');
-  }
-});
+module('Unit | Config | environment', function(hooks) {
+  setupTest(hooks);
 
-test('code_version has been set correctly', function(assert) {
-  let versionRegexp = new RegExp(/^(.+)\+(.{7})$/);
-  let codeVersion = this.subject().emberRollbarClient.payload.client.javascript['code_version'];
+  hooks.beforeEach(function() {
+    this.subject = function() {
+      return this.owner.resolveRegistration('config:environment');
+    };
+  });
 
-  assert.ok(versionRegexp.test(codeVersion));
+  test('code_version has been set correctly', function(assert) {
+    let versionRegexp = new RegExp(/^(.+)\+(.{7})$/);
+    let codeVersion = this.subject().emberRollbarClient.payload.client.javascript['code_version'];
+
+    assert.ok(versionRegexp.test(codeVersion));
+  });
 });
