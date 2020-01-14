@@ -17,8 +17,6 @@ export default Service.extend({
   }),
 
   currentUser: computed({
-    get() {},
-
     set(key, value) {
       this.get('notifier').configure({ payload: { person: value } });
       return value;
