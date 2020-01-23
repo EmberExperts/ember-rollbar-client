@@ -44,7 +44,6 @@ jobs:
       name: "Floating Dependencies"
       install:
         - npm install --no-package-lock
-        - npm rebuild
       script:
         - npm test
 
