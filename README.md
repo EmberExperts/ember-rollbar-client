@@ -30,7 +30,7 @@ The Rollbar client for EmberJS applications.
 
 * Ember.js v3.8 or above
 * Ember CLI v2.13 or above
-* Node.js v8 or above
+* Node.js v10 or above
 
 ## Installation
 
