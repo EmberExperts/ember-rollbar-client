@@ -2,6 +2,10 @@
 
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
+const postcssPresetEnv = require('postcss-preset-env');
+const postcssNested = require('postcss-nested');
+const postcssImport = require('postcss-import')
+
 module.exports = function(defaults) {
   let config = defaults.project.config(EmberAddon.env());
 
@@ -12,8 +16,14 @@ module.exports = function(defaults) {
       sourceMaps: 'inline'
     },
 
-    sassOptions: {
-      extension: 'sass',
+    postcssOptions: {
+      compile: {
+        plugins: [
+          postcssImport,
+          postcssNested,
+          postcssPresetEnv,
+        ]
+      },
     },
 
     fingerprint: {

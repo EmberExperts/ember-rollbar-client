@@ -24,12 +24,13 @@ The Rollbar client for EmberJS applications.
 - No `Bower` dependency
 - Fastboot compatible
 - Practical wrapper with access to pure `Rollbar`
-- Compatible with Ember 2.8 and up
+- Compatible with Ember 3.8 and up
 
 ## Compatibility
 
-* Ember.js v2.18 or above
+* Ember.js v3.8 or above
 * Ember CLI v2.13 or above
+* Node.js v10 or above
 
 ## Installation
 
