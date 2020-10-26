@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   root: true,
   parser: 'babel-eslint',
@@ -19,7 +21,9 @@ module.exports = {
     browser: true
   },
   rules: {
-    'ember/no-jquery': 'error'
+    'ember/no-jquery': 'error',
+    'ember/no-get': 'warn',
+    'ember/require-computed-property-dependencies': 'warn',
   },
   overrides: [
     // node files
