@@ -2,51 +2,9 @@
 
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
-const postcssPresetEnv = require('postcss-preset-env');
-const postcssNested = require('postcss-nested');
-const postcssImport = require('postcss-import')
-
 module.exports = function(defaults) {
-  let config = defaults.project.config(EmberAddon.env());
-
   let app = new EmberAddon(defaults, {
-    sourcemaps: { enabled: true },
-
-    babel: {
-      sourceMaps: 'inline'
-    },
-
-    postcssOptions: {
-      compile: {
-        plugins: [
-          postcssImport,
-          postcssNested,
-          postcssPresetEnv,
-        ]
-      },
-    },
-
-    fingerprint: {
-      exclude: ['apple-touch-icon', 'favicon', 'mstile']
-    },
-
-    favicons: {
-      faviconsConfig: {
-        appName: 'Ember Rollbar Client',
-        appDescription: 'Ember Rollbar Client is a wrapper of automatic Rollbar logger for EmberJS applications.',
-        developerName: 'Exelord',
-        developerURL: 'www.macsour.com',
-        background: '#ffffff',
-        path: config.rootURL,  // Path for overriding default icons path. `string`
-        url: 'https://exelord.github.io/ember-rollbar-client/images/og-image.jpg',  // Absolute URL for OpenGraph image. `string`
-      }
-    },
-
-    'ember-bootstrap': {
-      bootstrapVersion: 3,
-      importBootstrapFont: true,
-      importBootstrapCSS:false
-    }
+    // Add options here
   });
 
   /*
