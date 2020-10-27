@@ -12,21 +12,21 @@ module('Unit | Service | rollbar', function(hooks) {
 
   test('enabled', function(assert) {
     let service = this.owner.lookup('service:rollbar');
-    assert.equal(service.get('enabled'), false);
+    assert.equal(service.enabled, false);
 
-    service.set('enabled', true)
-    assert.equal(service.get('enabled'), true);
-    assert.equal(service.get('notifier.options.enabled'), true);
+    service.enabled = true;
+    assert.equal(service.enabled, true);
+    assert.equal(service.notifier.options.enabled, true);
   });
 
   test('currentUser', function(assert) {
     let service = this.owner.lookup('service:rollbar');
-    assert.equal(service.get('currentUser'), null);
+    assert.equal(service.currentUser, null);
 
     let user = { name: 'User' };
-    service.set('currentUser', user);
-    assert.equal(service.get('currentUser'), user);
-    assert.equal(service.get('notifier.options.payload.person.name'), 'User');
+    service.currentUser = user;
+    assert.equal(service.currentUser, user);
+    assert.equal(service.notifier.options.payload.person.name = 'U, ');
   });
 
   test('new rollbar client - deep merge config', function(assert) {
@@ -52,7 +52,7 @@ module('Unit | Service | rollbar', function(hooks) {
 
   test('notifier', function(assert) {
     let service = this.owner.lookup('service:rollbar');
-    assert.ok(service.get('notifier') instanceof Rollbar);
+    assert.ok(service.notifier instanceof Rollbar);
   });
 
   test('critical', function(assert) {

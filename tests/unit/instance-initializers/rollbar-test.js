@@ -65,11 +65,11 @@ module('Unit | Instance Initializer | rollbar', function(hooks) {
     initialize(this.appInstance);
     assert.throws(() => Ember.onerror(error), error);
 
-    this.appInstance.lookup('service:rollbar').set('enabled', false);
+    this.appInstance.lookup('service:rollbar').enabled = false;
     initialize(this.appInstance);
     assert.throws(() => Ember.onerror(error), error);
 
-    this.appInstance.lookup('service:rollbar').set('enabled', true);
+    this.appInstance.lookup('service:rollbar').enabled = true;
     initialize(this.appInstance);
     assert.throws(() => Ember.onerror(error), error);
   })
