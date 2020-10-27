@@ -39,7 +39,6 @@
     "ember-cli-babel": "^7.23.0",
     "ember-cli-htmlbars": "^5.3.1",
     "git-repo-version": "^1.0.2",
-    "lodash.merge": "^4.6.2",
     "rollbar": "~2.19.4"
   },
   "devDependencies": {
