@@ -1,10 +1,11 @@
 import Rollbar from "rollbar";
 import Ember from 'ember';
+import { next } from '@ember/runloop';
 
 let notifier;
 
 function startRollbar(config = {}) {
-  notifier = new Rollbar(config);
+  next(() => notifier = new Rollbar(config))
 
   let oldOnError = Ember.onerror
 
