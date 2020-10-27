@@ -21,10 +21,8 @@ The Rollbar client for EmberJS applications.
 - Automatic logger for:
   - `js window` errors
   - `ember` errors
-- No `Bower` dependency
 - Fastboot compatible
 - Practical wrapper with access to pure `Rollbar`
-- Compatible with Ember 3.8 and up
 
 ## Compatibility
 
@@ -50,70 +48,25 @@ The Rollbar client for EmberJS applications.
     return ENV;
   }
 ```
+3. Initialize and start the Rollbar in `/app/app.js` file:
+```js
+import config from 'YOUR_APP/config/environment';
+import { startRollbar } from 'ember-rollbar-client';
+
+startRollbar(config.emberRollbarClient); // you can also merge here your custom config
+```
 
 ## Usage
 
-### Rollbar Service
-In your component, controller, route, object (or whatever) you can inject the `rollbar` service, eg:
+Import Rollbar Notifier from anywhere and use standard Rollbar API:
 
 ```js
-import Ember from 'ember';
-const { Component, inject } = Ember;
+import RollbarNotifier from 'ember-rollbar-client';
 
-export default Component.extend({
-  rollbar: inject.service()
-});
+RollbarNotifier.critical('Report this critical error!')
 ```
 
-And then you can use following API to log errors:
-```js
-this.get('rollbar').critical(message, data = {})
-this.get('rollbar').error(message, data = {})
-this.get('rollbar').warning(message, data = {})
-this.get('rollbar').info(message, data = {})
-this.get('rollbar').debug(message, data = {})
-```
-
-### Set current user
-To set current user use just a normal setter in your session service:
-
-```js
-this.set('rollbar.currentUser', { email: 'user@email.com', id: 66 })
-```
-
-### Access current notifier
-If you can not find in our API a proper wrapper, you can always use the current Rollbar instance:
-```js
-this.get('rollbar.notifier')
-```
-
-### Support error handling from RSVP
-Create the following instance initializer in your app:
-
-```js
-// app/instance-initializer/rsvp-error-handler.js
-import RSVP from "rsvp";
-
-export function initialize(appInstance) {
-  let rollbarService = appInstance.lookup('service:rollbar');
-
-  RSVP.on('error', function(reason) {
-    rollbarService.error(reason);
-  });
-}
-
-export default {
-  name: 'rsvp-error-handler',
-  initialize
-};
-```
-
-### Create new Rollbar instance
-You can use `rollbarClient` function of the `Rollbar Service` to create a new instance of Rollbar notifier. Optionally you can pass your own config.
-
-```js
-this.get('rollbar').rollbarClient(/* config */)
-```
+For available API check [Rollbar documentation](https://docs.rollbar.com/docs/javascript)
 
 ### Support code_version on Heroku build
 Add at the bottom of your `config/environment.js` file:

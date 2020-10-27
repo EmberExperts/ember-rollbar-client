@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 let notifier;
 
-function initRollbar(config = {}) {
+function startRollbar(config = {}) {
   notifier = new Rollbar(config);
 
   let oldOnError = Ember.onerror
@@ -22,4 +22,4 @@ function initRollbar(config = {}) {
 }
 
 export default notifier;
-export { Rollbar, initRollbar };
+export { Rollbar, startRollbar };
