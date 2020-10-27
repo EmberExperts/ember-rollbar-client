@@ -3,7 +3,7 @@ import Resolver from 'ember-resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from 'dummy/config/environment';
 
-import { initRollbar } from 'ember-rollbar-client';
+import { startRollbar } from 'ember-rollbar-client';
 
 export default class App extends Application {
   modulePrefix = config.modulePrefix;
@@ -11,6 +11,6 @@ export default class App extends Application {
   Resolver = Resolver;
 }
 
-initRollbar(config.emberRollbarClient);
+startRollbar(config.emberRollbarClient);
 
 loadInitializers(App, config.modulePrefix);
