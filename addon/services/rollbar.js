@@ -1,15 +1,13 @@
 import { getOwner } from '@ember/application';
 import Service from '@ember/service';
-import { tracked } from '@glimmer/tracking';
 import deepMerge from 'lodash.merge';
 import Rollbar from 'rollbar';
 
 export default class RollbarService extends Service {
-  @tracked _notifier = undefined;
-  @tracked _currentUser = undefined;
+  _notifier = undefined;
 
   get enabled() {
-    return this.config.enabled;
+    return this.notifier.options.enabled;
   }
 
   set enabled(value) {
@@ -17,12 +15,11 @@ export default class RollbarService extends Service {
   }
 
   get currentUser() {
-    return this._currentUser;
+    return this.notifier.options.payload.person;
   }
 
   set currentUser(value) {
     this.notifier.configure({ payload: { person: value } });
-    this._currentUser = value;;
   }
 
   get notifier() {
