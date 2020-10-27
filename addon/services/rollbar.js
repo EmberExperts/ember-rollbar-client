@@ -1,60 +1,67 @@
 import { getOwner } from '@ember/application';
-import { computed } from '@ember/object';
 import Service from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import deepMerge from 'lodash.merge';
 import Rollbar from 'rollbar';
 
-export default Service.extend({
-  enabled: computed({
-    get() {
-      return this.get('config.enabled');
-    },
+export default class RollbarService extends Service {
+  @tracked _notifier = undefined;
+  @tracked _currentUser = undefined;
 
-    set(key, value) {
-      this.get('notifier').configure({ enabled: value });
-      return value;
-    }
-  }),
+  get enabled() {
+    return this.config.enabled;
+  }
 
-  currentUser: computed({
-    set(key, value) {
-      this.get('notifier').configure({ payload: { person: value } });
-      return value;
-    }
-  }),
+  set enabled(value) {
+    this.notifier.configure({ enabled: value });
+  }
 
-  notifier: computed(function() {
-    return this.rollbarClient();
-  }).readOnly(),
+  get currentUser() {
+    return this._currentUser;
+  }
 
-  config: computed(function() {
+  set currentUser(value) {
+    this.notifier.configure({ payload: { person: value } });
+    this._currentUser = value;;
+  }
+
+  get notifier() {
+    return this._notifier;
+  }
+
+  get config() {
     return getOwner(this).resolveRegistration('config:environment').emberRollbarClient;
-  }).readOnly(),
+  }
+
+  constructor() {
+    super(...arguments);
+    this._notifier = this.rollbarClient();
+  }
 
   rollbarClient(customConfig = {}) {
-    let config = deepMerge({}, this.get('config'), customConfig);
+    let config = deepMerge({}, this.config, customConfig);
     return new Rollbar(config);
-  },
+  }
 
   // Notifications
 
   critical(...args) {
-    return this.get('notifier').critical(...args);
-  },
+    return this.notifier.critical(...args);
+  }
 
   error(...args) {
-    return this.get('notifier').error(...args);
-  },
+    return this.notifier.error(...args);
+  }
 
   warning(...args) {
-    return this.get('notifier').warning(...args);
-  },
+    return this.notifier.warning(...args);
+  }
 
   info(...args) {
-    return this.get('notifier').info(...args);
-  },
+    return this.notifier.info(...args);
+  }
 
   debug(...args) {
-    return this.get('notifier').debug(...args);
+    return this.notifier.debug(...args);
   }
-});
+}

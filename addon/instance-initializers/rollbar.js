@@ -7,14 +7,14 @@ export function initialize(appInstance) {
 
   Ember.onerror = (...args) => {
     oldOnError(...args);
-    let enabled = rollbarService.get('enabled');
+    let enabled = rollbarService.enabled;
 
     if (enabled) {
       rollbarService.error(...args);
     }
 
     if (!enabled || Ember.testing) {
-      if (!fastbootService || !fastbootService.get('isFastBoot')) {
+      if (!fastbootService || !fastbootService.isFastBoot) {
         throw args[0];
       }
     }
