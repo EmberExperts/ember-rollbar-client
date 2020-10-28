@@ -2,13 +2,14 @@ import Rollbar from "rollbar";
 import Ember from 'ember';
 
 let notifier;
+let oldOnError;
 
-function startRollbar(config = {}) {
+export function startRollbar(config = {}) {
   notifier = new Rollbar({...config, ...{
     captureUnhandledRejections: typeof FastBoot === 'undefined'
   }})
 
-  let oldOnError = Ember.onerror
+  oldOnError = Ember.onerror
 
   Ember.onerror = (...args) => {
     if (notifier) notifier.error(args[0]);
@@ -23,5 +24,13 @@ function startRollbar(config = {}) {
   return notifier;
 }
 
-export default notifier;
-export { Rollbar, startRollbar };
+export function stopRollbar() {
+  notifier.options.enabled = false;
+  notifier = undefined
+  Ember.onerror = oldOnError;
+}
+
+export {
+  notifier as rollbar,
+  Rollbar
+}
