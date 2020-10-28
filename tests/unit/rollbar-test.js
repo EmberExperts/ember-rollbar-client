@@ -13,11 +13,7 @@ module('Unit | Rollbar', function(hooks) {
   });
 
   test('it starts rollbar', function(assert) {
-    assert.notOk(rollbar);
-
     startRollbar({ enabled: false, accessToken: 'test' });
-
-    assert.ok(rollbar);
     assert.strictEqual(rollbar.options.accessToken, 'test');
   });
 
