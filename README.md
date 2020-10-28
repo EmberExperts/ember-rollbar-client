@@ -61,12 +61,30 @@ startRollbar(config.emberRollbarClient); // you can also merge here your custom 
 Import Rollbar Notifier from anywhere and use standard Rollbar API:
 
 ```js
-import RollbarNotifier from 'ember-rollbar-client';
+import { rollbar } from 'ember-rollbar-client';
 
-RollbarNotifier.critical('Report this critical error!')
+rollbar.critical('Report this critical error!')
 ```
 
 For available API check [Rollbar documentation](https://docs.rollbar.com/docs/javascript)
+
+### Accessing Rollbar API
+
+You can access full Rollbar API by importing `Rollbar` (notice the difference `Rollbar` vs `rollbar`):
+```js
+import { Rollbar } from 'ember-rollbar-client';
+
+const customNotifier = new Rollbar();
+```
+
+### Stopping Rollbar notifier
+
+You can also stop the rollbar by using:
+```js
+import { stopRollbar } from 'ember-rollbar-client';
+
+stopRollbar();
+```
 
 ### Support code_version on Heroku build
 Add at the bottom of your `config/environment.js` file:
@@ -88,7 +106,7 @@ You can overwrite Rollbar configuration in environment's config. Here is the def
   accessToken: '',
   verbose: true,
   captureUncaught: environment !== 'test',
-  captureUnhandledRejections: environment !== 'test',
+  captureUnhandledRejections: environment !== 'test' // && !FastBoot,
   payload: {
     environment: environment,
     client: {
