@@ -1,37 +1,41 @@
 import Rollbar from "rollbar";
 import Ember from 'ember';
 
-const notifier = new Rollbar({
+const rollbar = new Rollbar({
   enabled: false,
   captureUnhandledRejections: typeof FastBoot === 'undefined'
 });
 
 let oldOnError;
 
-export function startRollbar(config = {}) {
-  notifier.configure({...{ enabled: true }, ...config});
+function startRollbar(config = {}) {
+  rollbar.configure({...{ enabled: true }, ...config, ...{
+    captureUnhandledRejections: typeof FastBoot === 'undefined'
+  }});
 
   oldOnError = Ember.onerror
 
   Ember.onerror = (...args) => {
-    if (notifier) notifier.error(args[0]);
+    if (rollbar) rollbar.error(args[0]);
 
     if (typeof oldOnError === 'function') {
       oldOnError(...args);
-    } else if (!notifier.options.enabled ||   Ember.testing) {
+    } else if (!rollbar.options.enabled ||   Ember.testing) {
       throw args[0];
     }
   };
 
-  return notifier;
+  return rollbar;
 }
 
-export function stopRollbar() {
-  notifier.options.enabled = false;
+function stopRollbar() {
+  rollbar.options.enabled = false;
   Ember.onerror = oldOnError;
 }
 
 export {
-  notifier as rollbar,
-  Rollbar
+  rollbar,
+  Rollbar,
+  startRollbar,
+  stopRollbar
 }
