@@ -15,14 +15,7 @@
 </p>
 
 ___
-The Rollbar client for EmberJS applications.
-> This one just works!
-
-- Automatic logger for:
-  - `js window` errors
-  - `ember` errors
-- Fastboot compatible
-- Practical wrapper with access to pure `Rollbar`
+The Rollbar Client is a thin layer of integration with EmberJS applications.
 
 ## Compatibility
 
@@ -32,6 +25,7 @@ The Rollbar client for EmberJS applications.
 
 ## Installation
 
+1. `npm install rollbar`
 1. `ember install ember-rollbar-client`
 2. Add your `accessToken` in `config/environment.js`
 ```js
@@ -60,6 +54,8 @@ installRollbar(new Rollbar(config.rollbar));
 
 ## Usage
 
+By default rollbar will handle automatically all uncaught errors and Ember errors. However, you can still report them manually.
+
 Import Rollbar Notifier from anywhere and use standard Rollbar API:
 
 ```js
@@ -70,18 +66,9 @@ rollbar.critical('Report this critical error!')
 
 For available API check [Rollbar documentation](https://docs.rollbar.com/docs/javascript)
 
-### Accessing Rollbar API
-
-You can access full Rollbar API by importing `Rollbar` (notice the difference `Rollbar` vs `rollbar`):
-```js
-import { Rollbar } from 'ember-rollbar-client';
-
-const customNotifier = new Rollbar();
-```
-
 ### Uninstalling Rollbar
 
-You can also uninstall the rollbar by using:
+This can be useful in tests:
 ```js
 import { uninstallRollbar } from 'ember-rollbar-client';
 
