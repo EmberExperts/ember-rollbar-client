@@ -38,7 +38,7 @@
     }
   },
   "peerDependencies": {
-    "rollbar": "^2.19.4"
+    "rollbar": ">= 2.19.4"
   },
   "dependencies": {
     "ember-auto-import": "^1.10.1",
