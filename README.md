@@ -37,7 +37,7 @@ The Rollbar client for EmberJS applications.
 ```js
   module.exports = function(environment) {
     var ENV = {
-      emberRollbarClient: {
+      rollbar: {
         accessToken: 'rollbar-write-client-token',
         // By default Rollbar logging is enabled in every environment except test and development.
         // Here is an example if you want to use it only in production
@@ -50,10 +50,12 @@ The Rollbar client for EmberJS applications.
 ```
 3. Initialize and start the Rollbar in `/app/app.js` file:
 ```js
+import Rollbar from 'rollbar';
 import config from 'YOUR_APP/config/environment';
-import { startRollbar } from 'ember-rollbar-client';
+import { installRollbar } from 'ember-rollbar-client';
 
-startRollbar(config.emberRollbarClient); // you can also merge here your custom config
+// Add this line before loadInitializers()
+installRollbar(new Rollbar(config.rollbar));
 ```
 
 ## Usage
@@ -77,13 +79,13 @@ import { Rollbar } from 'ember-rollbar-client';
 const customNotifier = new Rollbar();
 ```
 
-### Stopping Rollbar notifier
+### Uninstalling Rollbar
 
-You can also stop the rollbar by using:
+You can also uninstall the rollbar by using:
 ```js
-import { stopRollbar } from 'ember-rollbar-client';
+import { uninstallRollbar } from 'ember-rollbar-client';
 
-stopRollbar();
+uninstallRollbar();
 ```
 
 ### Support code_version on Heroku build
@@ -93,7 +95,7 @@ Add at the bottom of your `config/environment.js` file:
 if (process.env.SOURCE_VERSION) {
   let packageJson = require('../package.json');
   let gitHash = process.env.SOURCE_VERSION.substr(0, 7);
-  ENV.emberRollbarClient.payload.client.javascript['code_version'] = `${packageJson.version}+${gitHash}`;
+  ENV.rollbar.payload.client.javascript['code_version'] = `${packageJson.version}+${gitHash}`;
 }
 ```
 
@@ -101,7 +103,7 @@ if (process.env.SOURCE_VERSION) {
 You can overwrite Rollbar configuration in environment's config. Here is the default config:
 
 ``` js
-'emberRollbarClient': {
+'rollbar': {
   enabled: environment !== 'test' && environment !== 'development',
   accessToken: '',
   verbose: true,

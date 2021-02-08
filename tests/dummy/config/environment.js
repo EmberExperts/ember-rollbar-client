@@ -22,13 +22,13 @@ module.exports = function(environment) {
       // when it is created
     },
 
-    emberRollbarClient: {
+    rollbar: {
       accessToken: '3faf2b61902b4da59f30a010e1045a21'
     }
   };
 
   if (environment === 'development') {
-    // ENV.emberRollbarClient.enabled = true
+    // ENV.rollbar.enabled = true
 
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

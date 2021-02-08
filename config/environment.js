@@ -6,7 +6,7 @@ function codeVersion() {
 }
 
 module.exports = function(environment, appConfig) {
-  appConfig.emberRollbarClient = {
+  appConfig.rollbar = {
     enabled: environment !== 'test' && environment !== 'development',
     accessToken: '',
     verbose: true,

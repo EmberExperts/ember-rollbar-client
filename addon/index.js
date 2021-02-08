@@ -1,41 +1,33 @@
-import Rollbar from "rollbar";
 import Ember from 'ember';
 
-const rollbar = new Rollbar({
-  enabled: false,
-  captureUnhandledRejections: typeof FastBoot === 'undefined'
-});
+let oldOnError = Ember.onerror;
 
-let oldOnError;
+export let rollbar = null;
 
-function startRollbar(config = {}) {
-  rollbar.configure({...{ enabled: true }, ...config, ...{
-    captureUnhandledRejections: typeof FastBoot === 'undefined'
-  }});
+export function installRollbar(rollbarInstance) {
+  if (rollbar) {
+    rollbar = rollbarInstance;
+    return;
+  }
 
+  rollbar = rollbarInstance;
   oldOnError = Ember.onerror
 
   Ember.onerror = (...args) => {
-    if (rollbar) rollbar.error(args[0]);
+    const error = args[0];
+
+    rollbar.error(error);
 
     if (typeof oldOnError === 'function') {
       oldOnError(...args);
-    } else if (!rollbar.options.enabled ||   Ember.testing) {
-      throw args[0];
+    } else if (!rollbar.options.enabled || Ember.testing) {
+      throw error;
     }
   };
-
-  return rollbar;
 }
 
-function stopRollbar() {
-  rollbar.options.enabled = false;
+export function uninstallRollbar() {
+  rollbar = null;
+
   Ember.onerror = oldOnError;
-}
-
-export {
-  rollbar,
-  Rollbar,
-  startRollbar,
-  stopRollbar
 }

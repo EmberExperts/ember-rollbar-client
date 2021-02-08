@@ -1,24 +1,26 @@
 import { setupTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-import { rollbar, startRollbar, stopRollbar } from 'ember-rollbar-client';
+import sinon from 'sinon';
 
 import Ember from 'ember';
-import sinon from 'sinon';
+import Rollbar from 'rollbar';
+import { resetOnerror } from '@ember/test-helpers';
+import { rollbar, installRollbar } from 'ember-rollbar-client';
 
 module('Unit | Rollbar', function(hooks) {
   setupTest(hooks);
 
   hooks.beforeEach(function() {
-    stopRollbar();
+    resetOnerror();
   });
 
   test('it starts rollbar', function(assert) {
-    startRollbar({ enabled: false, accessToken: 'test' });
+    installRollbar(new Rollbar({ enabled: false, accessToken: 'test' }));
     assert.strictEqual(rollbar.options.accessToken, 'test');
   });
 
   test('it reports ember errors', function(assert) {
-    startRollbar({ enabled: false });
+    installRollbar(new Rollbar({ enabled: false }));
 
     const stub = sinon.stub(rollbar, 'error');
 
