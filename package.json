@@ -43,7 +43,7 @@
     "git-repo-version": "^1.0.2",
     "lodash.merge": "^4.6.1",
     "release-it": "^14.2.0",
-    "rollbar": "~2.24.0"
+    "rollbar": "~2.26.5"
   },
   "devDependencies": {
     "@ember/optional-features": "^1.1.0",
