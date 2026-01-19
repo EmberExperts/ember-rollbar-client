@@ -42,7 +42,7 @@
     "ember-cli-htmlbars": "^4.2.0",
     "git-repo-version": "^1.0.2",
     "lodash.merge": "^4.6.1",
-    "release-it": "^14.2.0",
+    "release-it": "^19.2.3",
     "rollbar": "~2.24.0"
   },
   "devDependencies": {
