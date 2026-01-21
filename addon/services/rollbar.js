@@ -56,5 +56,9 @@ export default Service.extend({
 
   debug(...args) {
     return this.get('notifier').debug(...args);
+  },
+
+  captureEvent(...args) {
+    return this.get('notifier').captureEvent(...args);
   }
 });
